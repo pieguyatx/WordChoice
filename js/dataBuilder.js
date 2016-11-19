@@ -8,6 +8,8 @@ var numSentences = rawData.length;
 // Create new JSON with data parsed into tree structure, with nested objects
 // LOOP1 (stop if s>S)
   // Read in sentence (index s)
+  var indexS = 0; // change this later when making loop
+  var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
   // cound number of words N
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
@@ -46,6 +48,6 @@ var numSentences = rawData.length;
 
 // Display anything to check
 var HTMLgeneric = '<br\><b>%data%</b>';
-var outputData = HTMLgeneric.replace("%data%",rawData[0].sentence
-  + " " + numSentences);
+var outputData = HTMLgeneric.replace("%data%",currentSentence
+  + " numSentences: " + numSentences);
 $(".output").append([outputData]);
