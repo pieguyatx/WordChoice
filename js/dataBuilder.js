@@ -8,19 +8,23 @@ var numSentences = rawData.length;
 // Create new JSON with data parsed into tree structure, with nested objects
 // LOOP1 (stop if s>S)
   // Read in sentence (index s)
-  var indexS = 0; // change this later when making loop
+  var indexS = 272; // DEBUG change this later when making loop
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
   var currentWords = currentSentence.split(" ");
   // count number of words N
   var numWords = currentWords.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
-  for (let i=0; i<numWords; i++){
-    currentWords[i] = currentWords[i].replace(".","");
-    console.log(currentWords[i]); // debug
+  var punctuationUndesired = [".", ",", "!", "?"];
+  for (let i=0; i<numWords; i++){ // look through each word`
+    for (let j=0; j<punctuationUndesired.length; j++){ // look for each punctuation
+      currentWords[i] = currentWords[i].replace(punctuationUndesired[j],"");
+    }
+    // Replace _ with a space
+    currentWords[i] = currentWords[i].replace("_"," ");
+    console.log(currentWords[i]); // DEBUG
   }
 
-  // Replace _ with a space
   // Set 1st layer of the new JSON as the working layer (reset search)
     // workingLayer = {new JSON}
   // LOOP2 (exit loop if index > N)
