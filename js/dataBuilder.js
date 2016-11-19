@@ -3,7 +3,7 @@
 // tree structure JSON that can be accessed by the main JS files more easily.
 
 // Display anything to check
-var HTMLgeneric = '<b>%data%</b>';
+var HTMLgeneric = '<br\><b>%data%</b>';
 var outputData = HTMLgeneric.replace("%data%","TESTDATA1");
 $(".output").append([outputData]);
 
