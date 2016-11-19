@@ -2,11 +2,6 @@
 // This JS file is for parsing the raw JSON sentence data into a
 // tree structure JSON that can be accessed by the main JS files more easily.
 
-// Display anything to check
-var HTMLgeneric = '<br\><b>%data%</b>';
-var outputData = HTMLgeneric.replace("%data%","TESTDATA1");
-$(".output").append([outputData]);
-
 // Read in raw JSON
 // Count number of sentences = NS
 // Create new JSON with data parsed into tree structure, with nested objects
@@ -46,3 +41,9 @@ $(".output").append([outputData]);
     // Go to next word in the sentence (n+1); go back to LOOP2
   // Go to next sentence (s+1); go back to LOOP1
 // output size of JSON in bytes to check
+
+
+// Display anything to check
+var HTMLgeneric = '<br\><b>%data%</b>';
+var outputData = HTMLgeneric.replace("%data%",rawData[0].sentence);
+$(".output").append([outputData]);

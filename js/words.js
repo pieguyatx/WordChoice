@@ -1,3 +1,4 @@
+var rawData =
 [{"sentence":"It was a good day.","numHits":21600000,"link":"https://www.youtube.com/watch?v=h4UqMyldS7Q","recordYear":2009,"accessYear":2016,"accessMonth":"October"},
 {"sentence":"It was a dark day for the Church when the 501C3 clause was created.","numHits":7,"link":"https://mariomurilloministries.wordpress.com/tag/501c3-non-profits/","recordYear":2015,"accessYear":2016,"accessMonth":"October"},
 {"sentence":"It was a dark day for the Church when the Barbarian sacrilege was on her consecrated priests and virgins.","numHits":1,"link":"https://books.google.com/books?id=-tpIAQAAMAAJ&pg=PA325&lpg=PA325&dq=%22it+was+a+dark+day+for+the+church+when+the+Barbarian%22&source=bl&ots=C80LiHTYTJ&sig=Mb8W1VxODiQYi5yioW6Yi59nHXA&hl=en&sa=X&ved=0ahUKEwjO5fOFz4XQAhXEJCYKHSxiA-AQ6AEIHDAA#v=onepage&q=it%20was%20a%20dark&f=false","recordYear":1861,"accessYear":2016,"accessMonth":"October"},
@@ -626,3 +627,4 @@
 {"sentence":"You can make an extra $50 or so each month.","numHits":53000,"link":"http://www.thepennyhoarder.com/50-make-extra-money/","recordYear":2016,"accessYear":2016,"accessMonth":"November"},
 {"sentence":"You can make an extra $1000 per month sending out training plans via email.","numHits":1,"link":"https://www.quora.com/How-can-people-make-money-from-cycling","recordYear":2015,"accessYear":2016,"accessMonth":"November"},
 {"sentence":"You can make an impact.","numHits":2580000,"link":"http://sff.org/donors/become-a-donor/open-a-fund-make-an-impact/","recordYear":2016,"accessYear":2016,"accessMonth":"November"}]
+;
