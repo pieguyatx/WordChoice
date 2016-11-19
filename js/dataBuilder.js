@@ -6,6 +6,7 @@
 // Count number of sentences = NS
 var numSentences = rawData.length;
 // Initialize new JSON with data parsed into tree structure, with nested objects
+// var wordsAll = {"A": {"word": "it", "order": 1}};  // DEBUG test input
 var wordsAll = {};
 // LOOP1 (stop if s>S)
 for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
@@ -21,19 +22,30 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   var workingLayer = wordsAll;
   // LOOP2 (exit loop if index > N)
     // Take single word from sentence array at index (or next index)
-    var wordCheck = currentWords[0]; // DEBUG change this index later when looping
+    var currentWord = currentWords[0]; // DEBUG change this index later when looping
     // Count how many words are already in this working layer of JSON (nChoices)
     var nChoices = countElementsInObject(workingLayer);
-    console.log(nChoices); // DEBUG
     // Check if word is already found in the working layer of the new JSON
-    // If word is not found,
+    var wordFound = false;
+    for(let elem=0; elem<nChoices; elem++){ // search proper elem (A, B, etc)
+      let existingWordProperty = String.fromCharCode(elem+65);
+      if(currentWord===workingLayer[existingWordProperty].word){
+        wordFound = true;
+        break;
+      }
+    }
+    if(wordFound===false){
+      // If word is not found,
       // add the word to the working layer of the new JSON, as an object:
         // Name the object according to nChoices in this layer already
-          // 0 => A, 1 => B, 2 => C, etc [open ended?]
+          // 0 => A (char code 65), 1 => B, 2 => C, etc [open ended?]
+      let propertyName = String.fromCharCode(nChoices+65);
+      console.log(propertyName); // DEBUG
         // Define the word object accordingly:
           // A{ word: "....",
           // order: "n",
           // next: {[empty obj to fill later]} }
+
         // If this is not the last word of the sentence (n !== N):
           // set empty "next" object as the new working layer in the new JSON
         // If this is the last word (n === N):
@@ -45,6 +57,7 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
             // accessYear: 2016,
             // accessMonth: "October"
             // sentence: "full original sentence w/ punctuation"
+    }
     // If word is found in new JSON already in the working layer:
       // go to found word object and set its "next" object as the working layer
     // Go to next word in the sentence (n+1); go back to LOOP2
