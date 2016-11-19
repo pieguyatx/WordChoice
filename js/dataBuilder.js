@@ -38,21 +38,26 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
         // A{ word: "....",
         // order: "n",
         // next: {[empty obj to fill later]} }
-      wordsAll[propertyName] = {};
-      wordsAll[propertyName].word = currentWord;
-      wordsAll[propertyName].order = indexN+1;
+      workingLayer[propertyName] = {};
+      workingLayer[propertyName].word = currentWord;
+      workingLayer[propertyName].order = indexN+1;
       console.log(workingLayer[propertyName]); // DEBUG
-        // If this is not the last word of the sentence (n !== N):
-          // set empty "next" object as the new working layer in the new JSON
-        // If this is the last word (n === N):
-          // add the terminal tree branch obj properties:
-            // numWords: N,
-            // numHits: integer,
-            // link: "www....",
-            // recordYear: 1999,
-            // accessYear: 2016,
-            // accessMonth: "October"
-            // sentence: "full original sentence w/ punctuation"
+      // If this is not the last word of the sentence (n !== N):
+      if(indexN<(numWords-1)){
+        // set empty "next" object as the new working layer in the new JSON
+        workingLayer[propertyName].next = {};
+      }
+      // If this is the last word (n === N):
+      else if(indexN===(numWords-1)){
+        // add the terminal tree branch obj properties:
+        workingLayer["numWords"] = numWords;
+        workingLayer.numHits = rawData[indexS].numHits;
+        workingLayer.link = rawData[indexS].link;
+        workingLayer.recordYear = rawData[indexS].recordYear;
+        workingLayer.accessYear = rawData[indexS].accessYear;
+        workingLayer.accessMonth = rawData[indexS].accessMonth;
+        workingLayer.sentence = rawData[indexS].sentence;
+      }
     }
     // If word is found in new JSON already in the working layer:
       // go to found word object and set its "next" object as the working layer
