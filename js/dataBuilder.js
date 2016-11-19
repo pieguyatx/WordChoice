@@ -5,10 +5,10 @@
 // Read in raw JSON -- done in HTML before this as: var rawData
 // Count number of sentences = NS
 var numSentences = rawData.length;
-// Create new JSON with data parsed into tree structure, with nested objects
+// Initialize new JSON with data parsed into tree structure, with nested objects
 var wordsAll = {};
 // LOOP1 (stop if s>S)
-for(let indexS=0; indexS<numSentences; indexS++){
+for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
@@ -17,12 +17,14 @@ for(let indexS=0; indexS<numSentences; indexS++){
   var numWords = currentWords.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
   currentWords = removePunctuation(currentWords);
-  console.log(currentWords); // DEBUG
   // Set 1st layer of the new JSON as the working layer (reset search)
   var workingLayer = wordsAll;
   // LOOP2 (exit loop if index > N)
     // Take single word from sentence array at index (or next index)
+    var wordCheck = currentWords[0]; // DEBUG change this index later when looping
     // Count how many words are already in this working layer of JSON (nChoices)
+    var nChoices = countElementsInObject(workingLayer);
+    console.log(nChoices); // DEBUG
     // Check if word is already found in the working layer of the new JSON
     // If word is not found,
       // add the word to the working layer of the new JSON, as an object:
@@ -49,7 +51,7 @@ for(let indexS=0; indexS<numSentences; indexS++){
   // Go to next sentence (s+1); go back to LOOP1
 }
 // output size of JSON in bytes to check
-
+console.log(wordsAll); // DEBUG
 
 // Display anything to check
 var HTMLgeneric = '<br\><b>%data%</b>';
@@ -58,7 +60,7 @@ var outputData = HTMLgeneric.replace("%data%",currentSentence
   + "<br\>" + " numWords: " + numWords);
 $(".debugOutput").append([outputData]);
 
-// Clean up punctuation and spaces in a sentence
+// Function to clean up punctuation and spaces in a sentence
 function removePunctuation(wordArray){
   var punctuationUndesired = [".", ",", "!", "?"];
   for (let i=0; i<wordArray.length; i++){ // look through each word`
@@ -71,4 +73,15 @@ function removePunctuation(wordArray){
   // Remove any empty elements due to extra spaces around words
   wordArray = wordArray.filter(Boolean);
   return wordArray;
+}
+
+// Function to count elements in a generic object
+function countElementsInObject(obj){
+  var count = 0;
+  for(var elem in obj){
+    if(obj.hasOwnProperty(elem)){
+      count++;
+    }
+  }
+  return count;
 }
