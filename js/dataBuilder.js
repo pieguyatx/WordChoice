@@ -15,6 +15,11 @@ var numSentences = rawData.length;
   // count number of words N
   var numWords = currentWords.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
+  for (let i=0; i<numWords; i++){
+    currentWords[i] = currentWords[i].replace(".","");
+    console.log(currentWords[i]); // debug
+  }
+
   // Replace _ with a space
   // Set 1st layer of the new JSON as the working layer (reset search)
     // workingLayer = {new JSON}
