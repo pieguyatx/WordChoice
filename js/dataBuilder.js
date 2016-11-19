@@ -26,15 +26,7 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
     // Count how many words are already in this working layer of JSON (nChoices)
     var nChoices = countElementsInObject(workingLayer);
     // Check if word is already found in the working layer of the new JSON
-    var wordFound = false;
-    for(let elem=0; elem<nChoices; elem++){ // search proper elem (A, B, etc)
-      let existingWordProperty = String.fromCharCode(elem+65);
-      if(currentWord.toLowerCase()===workingLayer[existingWordProperty].word.toLowerCase()){
-        wordFound = true;
-        break;
-      }
-    }
-
+    var wordFound = checkIfWordPresent(currentWord,workingLayer,nChoices);
     if(wordFound===false){
       // If word is not found,
       // add the word to the working layer of the new JSON, as an object:
@@ -98,4 +90,17 @@ function countElementsInObject(obj){
     }
   }
   return count;
+}
+
+// Function to check if a word matches existing word in set of words (object)
+function checkIfWordPresent(wordToCheck,objSetOfWords,numWordsInSet){
+  var wordFound = false;
+  for(let elem=0; elem<numWordsInSet; elem++){ // search proper elem (A, B, etc)
+    let existingWordProperty = String.fromCharCode(elem+65);
+    if(wordToCheck.toLowerCase()===objSetOfWords[existingWordProperty].word.toLowerCase()){
+      wordFound = true;
+      break;
+    }
+  }
+  return wordFound;
 }
