@@ -11,7 +11,9 @@ var numSentences = rawData.length;
   var indexS = 0; // change this later when making loop
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
-  // cound number of words N
+  var currentWords = currentSentence.split(" ");
+  // count number of words N
+  var numWords = currentWords.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
   // Replace _ with a space
   // Set 1st layer of the new JSON as the working layer (reset search)
@@ -49,5 +51,6 @@ var numSentences = rawData.length;
 // Display anything to check
 var HTMLgeneric = '<br\><b>%data%</b>';
 var outputData = HTMLgeneric.replace("%data%",currentSentence
-  + " numSentences: " + numSentences);
-$(".output").append([outputData]);
+  + "<br\>" + "words: " + currentWords
+  + "<br\>" + " numWords: " + numWords);
+$(".debugOutput").append([outputData]);

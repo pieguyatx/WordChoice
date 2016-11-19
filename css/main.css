@@ -8,3 +8,6 @@
 body {
   background-color: lightgray;
 }
+.debugOutput {
+  color: red;
+}
