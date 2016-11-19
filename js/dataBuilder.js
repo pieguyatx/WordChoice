@@ -6,8 +6,8 @@
 // Count number of sentences = NS
 var numSentences = rawData.length;
 // Initialize new JSON with data parsed into tree structure, with nested objects
-// var wordsAll = {"A": {"word": "it", "order": 1}};  // DEBUG test input
-var wordsAll = {};
+var wordsAll = {"A": {"word": "it", "order": 1}, "B": {"word": "You", "order": 1}};  // DEBUG test input
+//var wordsAll = {};
 // LOOP1 (stop if s>S)
 for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
@@ -29,11 +29,12 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
     var wordFound = false;
     for(let elem=0; elem<nChoices; elem++){ // search proper elem (A, B, etc)
       let existingWordProperty = String.fromCharCode(elem+65);
-      if(currentWord===workingLayer[existingWordProperty].word){
+      if(currentWord.toLowerCase()===workingLayer[existingWordProperty].word.toLowerCase()){
         wordFound = true;
         break;
       }
     }
+
     if(wordFound===false){
       // If word is not found,
       // add the word to the working layer of the new JSON, as an object:
