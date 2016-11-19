@@ -6,8 +6,8 @@
 // Count number of sentences = NS
 var numSentences = rawData.length;
 // Initialize new JSON with data parsed into tree structure, with nested objects
-var wordsAll = {"A": {"word": "it", "order": 1}, "B": {"word": "You", "order": 1}};  // DEBUG test input
-//var wordsAll = {};
+//var wordsAll = {"A": {"word": "it", "order": 1}, "B": {"word": "You", "order": 1}};  // DEBUG test input
+var wordsAll = {};
 // LOOP1 (stop if s>S)
 for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
@@ -22,7 +22,8 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   var workingLayer = wordsAll;
   // LOOP2 (exit loop if index > N)
     // Take single word from sentence array at index (or next index)
-    var currentWord = currentWords[0]; // DEBUG change this index later when looping
+    indexN = 0; // DEBUG change this index later when looping
+    var currentWord = currentWords[indexN];
     // Count how many words are already in this working layer of JSON (nChoices)
     var nChoices = countElementsInObject(workingLayer);
     // Check if word is already found in the working layer of the new JSON
@@ -30,15 +31,17 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
     if(wordFound===false){
       // If word is not found,
       // add the word to the working layer of the new JSON, as an object:
-        // Name the object according to nChoices in this layer already
-          // 0 => A (char code 65), 1 => B, 2 => C, etc [open ended?]
+      // Name the object according to nChoices in this layer already
+      // 0 => A (char code 65), 1 => B, 2 => C, etc [open ended?]
       let propertyName = String.fromCharCode(nChoices+65);
-      console.log(propertyName); // DEBUG
-        // Define the word object accordingly:
-          // A{ word: "....",
-          // order: "n",
-          // next: {[empty obj to fill later]} }
-
+      // Define the word object accordingly:
+        // A{ word: "....",
+        // order: "n",
+        // next: {[empty obj to fill later]} }
+      wordsAll[propertyName] = {};
+      wordsAll[propertyName].word = currentWord;
+      wordsAll[propertyName].order = indexN+1;
+      console.log(workingLayer[propertyName]); // DEBUG
         // If this is not the last word of the sentence (n !== N):
           // set empty "next" object as the new working layer in the new JSON
         // If this is the last word (n === N):
