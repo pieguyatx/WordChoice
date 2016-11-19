@@ -15,14 +15,22 @@ var numSentences = rawData.length;
   // count number of words N
   var numWords = currentWords.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
-  var punctuationUndesired = [".", ",", "!", "?"];
-  for (let i=0; i<numWords; i++){ // look through each word`
-    for (let j=0; j<punctuationUndesired.length; j++){ // look for each punctuation
-      currentWords[i] = currentWords[i].replace(punctuationUndesired[j],"");
+
+  currentWords = removePunctuation(currentWords);
+  console.log(currentWords); // DEBUG
+
+  function removePunctuation(wordArray){
+    var punctuationUndesired = [".", ",", "!", "?"];
+    for (let i=0; i<wordArray.length; i++){ // look through each word`
+      for (let j=0; j<punctuationUndesired.length; j++){ // look for each punctuation
+        wordArray[i] = wordArray[i].replace(punctuationUndesired[j],"");
+      }
+      // Replace _ with a space
+      wordArray[i] = wordArray[i].replace("_"," ");
     }
-    // Replace _ with a space
-    currentWords[i] = currentWords[i].replace("_"," ");
-    console.log(currentWords[i]); // DEBUG
+    // Remove any empty elements due to extra spaces around words
+    wordArray = wordArray.filter(Boolean);
+    return wordArray;
   }
 
   // Set 1st layer of the new JSON as the working layer (reset search)
