@@ -15,16 +15,21 @@ var HTMLschoolMajor = '<em><br>Major: %data%</em>';
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
   // Replace _ with a space
   // Set 1st layer of the new JSON as the working layer (reset search)
+    // workingLayer = {new JSON}
   // LOOP2 (exit loop if index > N)
     // Take single word from sentence array at index (or next index)
+    // Count how many words are already in this working layer of JSON (nChoices)
     // Check if word is already found in the working layer of the new JSON
     // If word is not found,
       // add the word to the working layer of the new JSON, as an object:
-        // { word: "....",
-        // order: "n"}
+        // Name the object according to nChoices in this layer already
+          // 0 => A, 1 => B, 2 => C, etc [open ended?]
+        // Define the word object accordingly:
+          // A{ word: "....",
+          // order: "n",
+          // next: {[empty obj to fill later]} }
         // If this is not the last word of the sentence (n !== N):
-          // create obj in working layer: next: {[empty obj to fill later]}}
-          // set "next" object as the new working layer in the new JSON
+          // set empty "next" object as the new working layer in the new JSON
         // If this is the last word (n === N):
           // add the terminal tree branch obj properties:
             // numWords: N,
@@ -38,4 +43,4 @@ var HTMLschoolMajor = '<em><br>Major: %data%</em>';
       // go to found word object and set its "next" object as the working layer
     // Go to next word in the sentence (n+1); go back to LOOP2
   // Go to next sentence (s+1); go back to LOOP1
-// output size of JSON in bytes to check  
+// output size of JSON in bytes to check
