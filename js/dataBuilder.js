@@ -6,9 +6,10 @@
 // Count number of sentences = NS
 var numSentences = rawData.length;
 // Create new JSON with data parsed into tree structure, with nested objects
+var wordsAll = {};
 // LOOP1 (stop if s>S)
+for(let indexS=0; indexS<numSentences; indexS++){
   // Read in sentence (index s)
-  var indexS = 272; // DEBUG change this later when making loop
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
   var currentWords = currentSentence.split(" ");
@@ -17,9 +18,8 @@ var numSentences = rawData.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
   currentWords = removePunctuation(currentWords);
   console.log(currentWords); // DEBUG
-
   // Set 1st layer of the new JSON as the working layer (reset search)
-    // workingLayer = {new JSON}
+  var workingLayer = wordsAll;
   // LOOP2 (exit loop if index > N)
     // Take single word from sentence array at index (or next index)
     // Count how many words are already in this working layer of JSON (nChoices)
@@ -47,6 +47,7 @@ var numSentences = rawData.length;
       // go to found word object and set its "next" object as the working layer
     // Go to next word in the sentence (n+1); go back to LOOP2
   // Go to next sentence (s+1); go back to LOOP1
+}
 // output size of JSON in bytes to check
 
 
