@@ -3,7 +3,9 @@
 // tree structure JSON that can be accessed by the main JS files more easily.
 
 // Display anything to check
-var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+var HTMLgeneric = '<b>%data%</b>';
+var outputData = HTMLgeneric.replace("%data%","TESTDATA1");
+$(".output").append([outputData]);
 
 // Read in raw JSON
 // Count number of sentences = NS
