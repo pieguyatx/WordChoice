@@ -14,54 +14,15 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
   var currentWords = currentSentence.split(" ");
-  // count number of words N
-  var numWords = currentWords.length;
   // Remove certain punctuation from elements: .,!?  (but not -'/_)
   currentWords = removePunctuation(currentWords);
-  // Set 1st layer of the new JSON as the working layer (reset search)
-  var workingLayer = wordsAll;
+  // count number of words N
+  var numWords = currentWords.length;
+  // Start with first word
+  var currentOrder = 0; // DEBUG change this index later when looping
   // RECURSIVE FUNCTIONS to populate one branch of new JSON tree w/ sentence
-    // Take single word from sentence array at index (or next index)
-    currentOrder = 0; // DEBUG change this index later when looping
-    var currentWord = currentWords[currentOrder];
-    // Count how many words are already in this working layer of JSON (nChoices)
-    var nChoices = countElementsInObject(workingLayer);
-    // Check if word is already found in the working layer of the new JSON
-    var wordFound = checkIfWordPresent(currentWord,workingLayer,nChoices);
-    if(wordFound===false){
-      // If word is not found,
-      // add the word to the working layer of the new JSON, as an object:
-      // Name the object according to nChoices in this layer already
-      // 0 => A (char code 65), 1 => B, 2 => C, etc [open ended?]
-      let propertyName = String.fromCharCode(nChoices+65);
-      // Define the word object accordingly:
-        // A{ word: "....",
-        // order: "n",
-        // next: {[empty obj to fill later]} }
-      workingLayer[propertyName] = {};
-      workingLayer[propertyName].word = currentWord;
-      workingLayer[propertyName].order = currentOrder+1;
-      console.log(workingLayer[propertyName]); // DEBUG
-      // If this is not the last word of the sentence (n !== N):
-      if(currentOrder<(numWords-1)){
-        // set empty "next" object as the new working layer in the new JSON
-        workingLayer[propertyName].next = {};
-      }
-      // If this is the last word (n === N):
-      else if(currentOrder===(numWords-1)){
-        // add the terminal tree branch obj properties:
-        workingLayer["numWords"] = numWords;
-        workingLayer.numHits = rawData[indexS].numHits;
-        workingLayer.link = rawData[indexS].link;
-        workingLayer.recordYear = rawData[indexS].recordYear;
-        workingLayer.accessYear = rawData[indexS].accessYear;
-        workingLayer.accessMonth = rawData[indexS].accessMonth;
-        workingLayer.sentence = rawData[indexS].sentence;
-      }
-    }
-    // If word is found in new JSON already in the working layer:
-      // go to found word object and set its "next" object as the working layer
-    // Go to next word in the sentence (n+1); go back to LOOP2
+  // Set 1st layer of the new JSON as the working layer (reset search)
+  wordsAll = populateWordTree(wordsAll,currentWords);
   // Go to next sentence (s+1); go back to LOOP1
 }
 // output size of JSON in bytes to check
@@ -111,4 +72,54 @@ function checkIfWordPresent(wordToCheck,objSetOfWords,numWordsInSet){
     }
   }
   return wordFound;
+}
+
+// Function to generate next branch in new JSON tree
+function populateWordTree(workingLayer,workingWords){
+  // Take single word from sentence array at index (or next index)
+  var currentWord = workingWords[currentOrder];
+  // Count how many words are already in this working layer of JSON (nChoices)
+  var nChoices = countElementsInObject(workingLayer);
+  // Check if word is already found in the working layer of the new JSON
+  var wordFound = checkIfWordPresent(currentWord,workingLayer,nChoices);
+  if(wordFound===false){
+    // If word is not found,
+    // add the word to the working layer of the new JSON, as an object:
+    // Name the object according to nChoices in this layer already
+    // 0 => A (char code 65), 1 => B, 2 => C, etc [open ended?]
+    let propertyName = String.fromCharCode(nChoices+65);
+    // Define the word object accordingly:
+      // A{ word: "....",
+      // order: "n",
+      // next: {[empty obj to fill later]} }
+    workingLayer[propertyName] = {};
+    workingLayer[propertyName].word = currentWord;
+    workingLayer[propertyName].order = currentOrder+1;
+    // If this is not the last word of the sentence (n !== N):
+    if(currentOrder<(numWords-1)){
+      // define empty "next" object in the new word in the new JSON
+      workingLayer[propertyName].next = {};
+      var nextWorkingLayer = workingLayer[propertyName].next;
+    }
+    // If this is the last word (n === N):
+    else if(currentOrder===(workingWords.length-1)){
+      // add the terminal tree branch obj properties:
+      workingLayer["numWords"] = numWords;
+      workingLayer.numHits = rawData[indexS].numHits;
+      workingLayer.link = rawData[indexS].link;
+      workingLayer.recordYear = rawData[indexS].recordYear;
+      workingLayer.accessYear = rawData[indexS].accessYear;
+      workingLayer.accessMonth = rawData[indexS].accessMonth;
+      workingLayer.sentence = rawData[indexS].sentence;
+    }
+  }
+  // If word is found in new JSON already in the working layer:
+  else if(wordFound===true){
+    // go to found word object and set its "next" object as the working layer
+  
+  }
+  // advance to next word
+  currentOrder++;
+  // Output the resulting new object
+  return workingLayer;
 }
