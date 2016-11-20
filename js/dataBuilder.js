@@ -20,10 +20,10 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   currentWords = removePunctuation(currentWords);
   // Set 1st layer of the new JSON as the working layer (reset search)
   var workingLayer = wordsAll;
-  // LOOP2 (exit loop if index > N)
+  // RECURSIVE FUNCTIONS to populate one branch of new JSON tree w/ sentence
     // Take single word from sentence array at index (or next index)
-    indexN = 0; // DEBUG change this index later when looping
-    var currentWord = currentWords[indexN];
+    currentOrder = 0; // DEBUG change this index later when looping
+    var currentWord = currentWords[currentOrder];
     // Count how many words are already in this working layer of JSON (nChoices)
     var nChoices = countElementsInObject(workingLayer);
     // Check if word is already found in the working layer of the new JSON
@@ -40,15 +40,15 @@ for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
         // next: {[empty obj to fill later]} }
       workingLayer[propertyName] = {};
       workingLayer[propertyName].word = currentWord;
-      workingLayer[propertyName].order = indexN+1;
+      workingLayer[propertyName].order = currentOrder+1;
       console.log(workingLayer[propertyName]); // DEBUG
       // If this is not the last word of the sentence (n !== N):
-      if(indexN<(numWords-1)){
+      if(currentOrder<(numWords-1)){
         // set empty "next" object as the new working layer in the new JSON
         workingLayer[propertyName].next = {};
       }
       // If this is the last word (n === N):
-      else if(indexN===(numWords-1)){
+      else if(currentOrder===(numWords-1)){
         // add the terminal tree branch obj properties:
         workingLayer["numWords"] = numWords;
         workingLayer.numHits = rawData[indexS].numHits;
