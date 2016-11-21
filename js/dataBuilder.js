@@ -6,10 +6,10 @@
 // Count number of sentences = NS
 var numSentences = rawData.length;
 // Initialize new JSON with data parsed into tree structure, with nested objects
-var wordsAll = {"A": {"word": "it", "order": 1, "next": {"A": {"word": "shall"}}}, "B": {"word": "You", "order": 1, "next": {"A": {}}}};  // DEBUG test input
-//var wordsAll = {};
+//var wordsAll = {"A": {"word": "it", "order": 1, "next": {"A": {"word": "shall"}}}, "B": {"word": "You", "order": 1, "next": {"A": {}}}};  // DEBUG test input
+var wordsAll = {};
 // LOOP1 (stop if s>S)
-for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
+for(var indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
@@ -102,17 +102,20 @@ function populateWordTree(workingLayer,workingWords){
       // define empty "next" object in the new word in the new JSON
       workingLayer[propertyName].next = {};
       var nextWorkingLayer = workingLayer[propertyName].next;
+      // Advance to next word to populate using recursion
+      currentOrder++;
+      populateWordTree(nextWorkingLayer,workingWords);
     }
     // If this is the last word (n === N):
     else if(currentOrder===(workingWords.length-1)){
       // add the terminal tree branch obj properties:
-      workingLayer["numWords"] = numWords;
-      workingLayer.numHits = rawData[indexS].numHits;
-      workingLayer.link = rawData[indexS].link;
-      workingLayer.recordYear = rawData[indexS].recordYear;
-      workingLayer.accessYear = rawData[indexS].accessYear;
-      workingLayer.accessMonth = rawData[indexS].accessMonth;
-      workingLayer.sentence = rawData[indexS].sentence;
+      workingLayer[propertyName]["numWords"] = numWords;
+      workingLayer[propertyName].numHits = rawData[indexS].numHits;
+      workingLayer[propertyName].link = rawData[indexS].link;
+      workingLayer[propertyName].recordYear = rawData[indexS].recordYear;
+      workingLayer[propertyName].accessYear = rawData[indexS].accessYear;
+      workingLayer[propertyName].accessMonth = rawData[indexS].accessMonth;
+      workingLayer[propertyName].sentence = rawData[indexS].sentence;
     }
   }
   // If word is found in new JSON already in the working layer:
@@ -121,8 +124,6 @@ function populateWordTree(workingLayer,workingWords){
     workingLayer = workingLayer[wordFound[1]].next;
     console.log(workingLayer[wordFound[1]]);
   }
-  // advance to next word
-  currentOrder++;
   // Output the resulting new object
   return workingLayer;
 }
