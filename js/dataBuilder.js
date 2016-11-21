@@ -6,8 +6,8 @@
 // Count number of sentences = NS
 var numSentences = rawData.length;
 // Initialize new JSON with data parsed into tree structure, with nested objects
-//var wordsAll = {"A": {"word": "it", "order": 1}, "B": {"word": "You", "order": 1}};  // DEBUG test input
-var wordsAll = {};
+var wordsAll = {"A": {"word": "it", "order": 1, "next": {"A": {"word": "shall"}}}, "B": {"word": "You", "order": 1, "next": {"A": {}}}};  // DEBUG test input
+//var wordsAll = {};
 // LOOP1 (stop if s>S)
 for(let indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
@@ -65,24 +65,26 @@ function countElementsInObject(obj){
 function checkIfWordPresent(wordToCheck,objSetOfWords,numWordsInSet){
   var wordFound = false;
   for(let elem=0; elem<numWordsInSet; elem++){ // search proper elem (A, B, etc)
-    let existingWordProperty = String.fromCharCode(elem+65);
+    var existingWordProperty = String.fromCharCode(elem+65);
     if(wordToCheck.toLowerCase()===objSetOfWords[existingWordProperty].word.toLowerCase()){
       wordFound = true;
       break;
     }
   }
-  return wordFound;
+  // Return whether a match was found, and if so, what the property is (A,B,etc)
+  return [wordFound,existingWordProperty];
 }
 
 // Function to generate next branch in new JSON tree
+// Input an object (node or root), and a list of words from a sentence
 function populateWordTree(workingLayer,workingWords){
   // Take single word from sentence array at index (or next index)
-  var currentWord = workingWords[currentOrder];
+  var currentWord = workingWords[currentOrder]; //currentOrder = global var
   // Count how many words are already in this working layer of JSON (nChoices)
   var nChoices = countElementsInObject(workingLayer);
   // Check if word is already found in the working layer of the new JSON
   var wordFound = checkIfWordPresent(currentWord,workingLayer,nChoices);
-  if(wordFound===false){
+  if(wordFound[0]===false){
     // If word is not found,
     // add the word to the working layer of the new JSON, as an object:
     // Name the object according to nChoices in this layer already
@@ -114,9 +116,10 @@ function populateWordTree(workingLayer,workingWords){
     }
   }
   // If word is found in new JSON already in the working layer:
-  else if(wordFound===true){
+  else if(wordFound[0]===true){
     // go to found word object and set its "next" object as the working layer
-  
+    workingLayer = workingLayer[wordFound[1]].next;
+    console.log(workingLayer[wordFound[1]]);
   }
   // advance to next word
   currentOrder++;
