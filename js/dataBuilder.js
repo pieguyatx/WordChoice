@@ -25,10 +25,12 @@ for(var indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   wordsAll = populateWordTree(wordsAll,currentWords);
   // Go to next sentence (s+1); go back to LOOP1
 }
-// output size of JSON in bytes to check
-console.log(wordsAll); // DEBUG
 
-// Display anything to check
+// DEBUG output size of JSON in bytes to check
+console.log(wordsAll); // DEBUG
+var textOutput = JSON.stringify(wordsAll); // DEBUG use this to visualize: http://chris.photobooks.com/json/default.htm
+
+// DEBUG Display anything to check
 var HTMLgeneric = '<br\><b>%data%</b>';
 var outputData = HTMLgeneric.replace("%data%",currentSentence
   + "<br\>" + "words: " + currentWords
