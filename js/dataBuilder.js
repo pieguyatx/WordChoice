@@ -25,6 +25,7 @@ for(var indexS=0; indexS<numSentences; indexS++){  //DEBUG change end condition 
   // Go to next sentence (s+1); go back to LOOP1
 }
 
+
 // DEBUG output size of JSON in bytes to check
 console.log(wordsAll); // DEBUG
 var textOutput = JSON.stringify(wordsAll); // DEBUG
