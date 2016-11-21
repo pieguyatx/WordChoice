@@ -9,26 +9,27 @@ var numSentences = rawData.length;
 //var wordsAll = {"A": {"word": "it", "order": 1, "next": {"A": {"word": "shall"}}}, "B": {"word": "You", "order": 1, "next": {"A": {}}}};  // DEBUG test input
 var wordsAll = {};
 // LOOP1 (stop if s>S) S = numSentences read in from raw data
-for(var indexS=0; indexS<2; indexS++){  //DEBUG change end condition later
+for(var indexS=0; indexS<numSentences; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
   var currentWords = currentSentence.split(" ");
-  // Remove certain punctuation from elements: .,!?  (but not -'/_)
+  // Remove certain punctuation from elements: .,!?"  (but not -'/_)
   currentWords = removePunctuation(currentWords);
   // count number of words N
   var numWords = currentWords.length;
   // Start with first word
   var currentOrder = 0;
   // Populate one branch of new JSON tree w/ sentence (use recursion)
-  console.log(wordsAll); // DEBUG
   wordsAll = populateWordTree(wordsAll,currentWords);
   // Go to next sentence (s+1); go back to LOOP1
 }
 
 // DEBUG output size of JSON in bytes to check
 console.log(wordsAll); // DEBUG
-var textOutput = JSON.stringify(wordsAll); // DEBUG use this to visualize: http://chris.photobooks.com/json/default.htm
+var textOutput = JSON.stringify(wordsAll); // DEBUG
+// use this to visualize: http://chris.photobooks.com/json/default.htm
+// or this may be better: http://jsonlint.com/
 
 // DEBUG Display anything to check
 var HTMLgeneric = '<br\><b>%data%</b>';
@@ -46,6 +47,8 @@ function removePunctuation(wordArray){
     }
     // Replace _ with a space
     wordArray[i] = wordArray[i].replace("_"," ");
+    /* // Get rid of double quotes (special case)
+    wordArray[i] = wordArray[i].replace(/\"/g,""); */  // only if quotes added later
   }
   // Remove any empty elements due to extra spaces around words
   wordArray = wordArray.filter(Boolean);
