@@ -8,8 +8,8 @@ var numSentences = rawData.length;
 // Initialize new JSON with data parsed into tree structure, with nested objects
 //var wordsAll = {"A": {"word": "it", "order": 1, "next": {"A": {"word": "shall"}}}, "B": {"word": "You", "order": 1, "next": {"A": {}}}};  // DEBUG test input
 var wordsAll = {};
-// LOOP1 (stop if s>S)
-for(var indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
+// LOOP1 (stop if s>S) S = numSentences read in from raw data
+for(var indexS=0; indexS<2; indexS++){  //DEBUG change end condition later
   // Read in sentence (index s)
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
@@ -19,9 +19,9 @@ for(var indexS=0; indexS<1; indexS++){  //DEBUG change end condition later
   // count number of words N
   var numWords = currentWords.length;
   // Start with first word
-  var currentOrder = 0; // DEBUG change this index later when looping
-  // RECURSIVE FUNCTIONS to populate one branch of new JSON tree w/ sentence
-  // Set 1st layer of the new JSON as the working layer (reset search)
+  var currentOrder = 0;
+  // Populate one branch of new JSON tree w/ sentence (use recursion)
+  console.log(wordsAll); // DEBUG
   wordsAll = populateWordTree(wordsAll,currentWords);
   // Go to next sentence (s+1); go back to LOOP1
 }
@@ -100,10 +100,11 @@ function populateWordTree(workingLayer,workingWords){
     workingLayer[propertyName].word = currentWord;
     workingLayer[propertyName].order = currentOrder+1;
     // If this is not the last word of the sentence (n !== N):
+    var nextWorkingLayer = {}; // initialize next layer
     if(currentOrder<(numWords-1)){
       // define empty "next" object in the new word in the new JSON
       workingLayer[propertyName].next = {};
-      var nextWorkingLayer = workingLayer[propertyName].next;
+      nextWorkingLayer = workingLayer[propertyName].next;
       // Advance to next word to populate using recursion
       currentOrder++;
       populateWordTree(nextWorkingLayer,workingWords);
@@ -123,8 +124,11 @@ function populateWordTree(workingLayer,workingWords){
   // If word is found in new JSON already in the working layer:
   else if(wordFound[0]===true){
     // go to found word object and set its "next" object as the working layer
-    workingLayer = workingLayer[wordFound[1]].next;
-    console.log(workingLayer[wordFound[1]]);
+    nextWorkingLayer = workingLayer[wordFound[1]].next;
+    //console.log(workingLayer[wordFound[1]]); //DEBUG
+    // Advance to next word to populate using recursion
+    currentOrder++;
+    populateWordTree(nextWorkingLayer,workingWords);
   }
   // Output the resulting new object
   return workingLayer;
