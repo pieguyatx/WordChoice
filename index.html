@@ -8,14 +8,46 @@
     <meta name="description" content="This digital toy lets you choose your own path, one word at a time.  Let's see how unique your word choices really are.">
     <meta name="keywords" content="app, game, toy, storytelling, internet, English">
     <meta name="author" content="Pius Wong">
+    <link href="https://fonts.googleapis.com/css?family=Copse|Crimson+Text" rel="stylesheet">
   </head>
   <body>
-    <header>
-      Word Choice v0.1
+
+    <header id="flexContainer">
+      <div class="infoPrimary">
+        <div class="titleCard">
+          Word Choice v0.1
+        </div>
+        <div class="authorship">
+          <a href="http://www.pioslabs.com" title="Link to Pios Labs on the web">Pios Labs</a>
+        </div>
+        <div class="dateUpdated">
+          Updated November 2016
+        </div>
+      </div>
+      <div class="infoSecondary">
+        Symbol or graphic goes here? Of a book?
+      </div>
+      <div class="startOver">
+        Start Over button
+      </div>
     </header>
-    <p class="debugOutput">
-      This is a paragraph for testing data output.
-    </p>
+
+    <main>
+      <div class="messageDisplay">
+        <p class="debugOutput">
+          This is a paragraph for testing data output.
+        </p>
+      </div>
+      <div class="mainWindow">
+        Choices go here, and snarky final messages and scores.
+      </div>
+    </main>
+
+    <footer>
+      <div class="achievementsButton">
+      </div>
+    </footer>
+
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/words.js"></script>
     <script src="js/dataBuilder.js"></script>

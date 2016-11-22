@@ -1,3 +1,8 @@
+/* Debug CSS */
+* {
+  border: 1px solid red !important;
+}
+
 /* Pius Wong */
 * {
   -webkit-box-sizing: border-box;
@@ -7,6 +12,46 @@
 }
 body {
   background-color: lightgray;
+  display: block;
+  /* font-family: 'Crimson Text', serif; */
+  font-family: 'Copse', serif;
+  font-size: 1.5em;
+}
+header {
+  width: 100%;
+}
+#flexContainer {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  flex-wrap: wrap;
+}
+.infoPrimary {
+  width: 33%;
+}
+.titleCard {
+  font-size: 2em;
+  font-weight: bolder;
+}
+.infoSecondary {
+  width: 33%;
+}
+.startOver {
+  width: 33%;
+  text-align: center;
+  padding: 2em 0 ;
+}
+main {
+  width: 100%;
+}
+.messageDisplay{
+  font-size: 1.5em;
+}
+.mainWindow{
+  font-size: 2em;
 }
 .debugOutput {
   color: red;
