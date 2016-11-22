@@ -9,7 +9,7 @@ var numSentences = rawData.length;
 //var wordsAll = {"A": {"word": "it", "order": 1, "next": {"A": {"word": "shall"}}}, "B": {"word": "You", "order": 1, "next": {"A": {}}}};  // DEBUG test input
 var wordsAll = {};
 // LOOP1 (stop if s>S) S = numSentences read in from raw data
-for(var indexS=0; indexS<numSentences; indexS++){  //DEBUG change end condition later
+for(var indexS=0; indexS<numSentences; indexS++){
   // Read in sentence (index s)
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
