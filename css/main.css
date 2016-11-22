@@ -52,7 +52,12 @@ main {
 }
 .mainWindow{
   font-size: 2em;
+  text-align: center;
 }
+.achievementsButton{
+  text-align: right;
+}
+
 .debugOutput {
   color: red;
 }
