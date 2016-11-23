@@ -16,7 +16,7 @@
   var choices = ["ChoiceA","ChoiceB","ChoiceC","ChoiceD"];
   for(let i=0; i<choices.length; i++){
     let outputData = choices[i];
-    let choiceContainer = "<div>%data%</div>";
+    let choiceContainer = "<div class='choice'>%data%</div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]);
   }

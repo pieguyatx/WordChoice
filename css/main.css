@@ -55,7 +55,10 @@ main {
   text-align: center;
 }
 .mainWindow div {
-  flex-grow: 1;  
+  flex-grow: 1;
+}
+.choice {
+  padding: 1em;
 }
 .achievementsButton{
   text-align: right;
