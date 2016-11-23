@@ -56,8 +56,6 @@ main {
 }
 .mainWindow div {
   flex-grow: 1;
-}
-.choice {
   padding: 1em;
 }
 .achievementsButton{
