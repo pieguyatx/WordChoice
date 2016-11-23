@@ -13,6 +13,13 @@
 // Offer the initial choices
   // Read in possible choices from word tree
   // Display choices randomly in the appropriate area
+  var choices = ["ChoiceA","ChoiceB","ChoiceC","ChoiceD"];
+  for(let i=0; i<choices.length; i++){
+    let outputData = choices[i];
+    let choiceContainer = "<div>%data%</div>";
+    outputData = choiceContainer.replace("%data%",outputData);
+    $(".mainWindow").append([outputData]);
+  }
     // animate?
 
 // Respond to choice -- LOOP

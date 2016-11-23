@@ -54,6 +54,9 @@ main {
   font-size: 2em;
   text-align: center;
 }
+.mainWindow div {
+  flex-grow: 1;  
+}
 .achievementsButton{
   text-align: right;
 }
