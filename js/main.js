@@ -13,7 +13,13 @@
 // Offer the initial choices
   // Read in possible choices from word tree
   // Display choices randomly in the appropriate area
-  var choices = ["ChoiceA","ChoiceB","ChoiceC","ChoiceD"];
+  //var choices = ["ChoiceA","ChoiceBisareallylongword","ChoiceC","ChoiceD"]; //DEBUG
+  var numChoices = countElementsInObject(wordsAll);
+  var choices = [];
+  for(let i=0; i<numChoices; i++){
+    let propertyName = String.fromCharCode(i+65);
+    choices[i] = wordsAll[propertyName].word;
+  }
   for(let i=0; i<choices.length; i++){
     let outputData = choices[i];
     let choiceContainer = "<div class='choice'>%data%</div>";
