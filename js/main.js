@@ -30,6 +30,13 @@
 
 // Respond to choice -- LOOP
   // Read in user choice
+  $(".choice").click(function(){
+    alert("The paragraph was clicked.");
+  });
+
+  function myFunctionMouseDown(elmnt, clr) {
+      elmnt.style.color = clr;
+  }
   // Save word choice
   // Display word choice in appropriate place
   // Clear screen of old choices

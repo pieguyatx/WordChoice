@@ -53,6 +53,7 @@ main {
 .mainWindow{
   font-size: 2em;
   text-align: center;
+  font-weight: bold;
 }
 .mainWindow div {
   flex-grow: 1;
