@@ -10,16 +10,18 @@
     // constant mouse listener (keyboard option?)
   // ??history / high scores? / achievements? badges?
 
+var objWordChoices = wordsAll;
+
 // Offer the initial choices
   // Read in possible choices from word tree
   // Display choices randomly in the appropriate area
   //var choices = ["ChoiceA","ChoiceBisareallylongword","ChoiceC","ChoiceD"]; //DEBUG
-  var numChoices = countElementsInObject(wordsAll);
+  var numChoices = countElementsInObject(objWordChoices);
   var choices = [];
   var arrayOrder = [];
   for(let i=0; i<numChoices; i++){
     let propertyName = String.fromCharCode(i+65);
-    choices[i] = wordsAll[propertyName].word; // get word choices
+    choices[i] = objWordChoices[propertyName].word; // get word choices
     arrayOrder[i] = i;  // initialize array to be shuffled later
   }
   // Rearrange display order to be random
@@ -35,13 +37,17 @@
   }
     // animate?
 
-// Respond to choice -- LOOP
+// Respond to choice
+  // Declare global variables to be used outside click() functions
+  var chosenWord;
+  var chosenProperty;
   // Read in user choice
   for(let i=0; i<numChoices; i++){
     $(".choice"+i).click(function(){
       //alert("The paragraph for choice"+i+" was clicked."); // DEBUG
       // Save word choice
-      var chosenWord = choices[i];
+      chosenWord = choices[i];
+      chosenProperty = String.fromCharCode(i+65);
       // Display word choice in appropriate place
       $(".messageDisplay").append(chosenWord);
       // Clear screen of old choices
@@ -49,7 +55,8 @@
     });
   }
 
-  // Find whether there are any more choices or not
+  // Find whether there are any more choices at least 3 layers down
+//  objWordChoices.chosenProperty.
     // Load up next choices (LOOP back) OR
     // go on to "end" state, passing final data in tree branch terminus
 
