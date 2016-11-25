@@ -52,11 +52,22 @@ var objWordChoices = wordsAll;
       $(".messageDisplay").append(chosenWord);
       // Clear screen of old choices
       $(".mainWindow").empty();
+      // Find whether there are any more choices at least 3 layers down
+      // Does choice have "next" property?
+      console.log(objWordChoices[chosenProperty].hasOwnProperty("next"));
+        // If yes, is there more than 1 choice in the "next" property?
+          // If there is more than 1 choice, then display choices like normal
+          // If there is only 1 choice, then does the next layer have more than 1 choice?
+            // If there is more than 1 choice, then display original choices like normal
+            // If there is only 1 choice, then does the next layer have more than 1 choice?
+              // If there is more than 1 choice, then display original choices like normal
+              // If there is only 1 choice, then assume there are no more choices.
+                // Go to the end state
+      // If no, then this is the last choice and last word. Go to "end" state
     });
   }
 
-  // Find whether there are any more choices at least 3 layers down
-//  objWordChoices.chosenProperty.
+
     // Load up next choices (LOOP back) OR
     // go on to "end" state, passing final data in tree branch terminus
 
