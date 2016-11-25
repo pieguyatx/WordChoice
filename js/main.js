@@ -7,7 +7,7 @@
   // authorship, version, contact info
   // instructions
   // START OVER button
-$(".startOver").click(function(){
+$("header").on('click','.startOver',function(){
   $(".messageDisplay").empty();
   $(".mainWindow").empty();
   offerChoices(wordsAll);
