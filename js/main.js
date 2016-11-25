@@ -38,16 +38,13 @@ var objWordChoices = wordsAll;
     // animate?
 
 // Respond to choice
-  // Declare global variables to be used outside click() functions
-  var chosenWord;
-  var chosenProperty;
   // Read in user choice
   for(let i=0; i<numChoices; i++){
     $(".choice"+i).click(function(){
       //alert("The paragraph for choice"+i+" was clicked."); // DEBUG
       // Save word choice
-      chosenWord = choices[i];
-      chosenProperty = String.fromCharCode(i+65);
+      var chosenWord = choices[i];
+      var chosenProperty = String.fromCharCode(i+65);
       // Display word choice in appropriate place
       $(".messageDisplay").append(chosenWord);
       // Clear screen of old choices
