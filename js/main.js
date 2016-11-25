@@ -7,6 +7,11 @@
   // authorship, version, contact info
   // instructions
   // START OVER button
+$(".startOver").click(function(){
+  $(".messageDisplay").empty();
+  $(".mainWindow").empty();
+  offerChoices(wordsAll);
+});
     // constant mouse listener (keyboard option?)
   // ??history / high scores? / achievements? badges?
 
