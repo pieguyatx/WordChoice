@@ -32,16 +32,16 @@
   // Read in user choice
   for(let i=0; i<numChoices; i++){
     $(".choice"+i).click(function(){
-      alert("The paragraph for choice"+i+" was clicked.");
+      //alert("The paragraph for choice"+i+" was clicked."); // DEBUG
+      // Save word choice
+      var chosenWord = choices[i];
+      // Display word choice in appropriate place
+      $(".messageDisplay").append(chosenWord);
+      // Clear screen of old choices
+      $(".mainWindow").empty();
     });
   }
 
-  function myFunctionMouseDown(elmnt, clr) {
-      elmnt.style.color = clr;
-  }
-  // Save word choice
-  // Display word choice in appropriate place
-  // Clear screen of old choices
   // Find whether this is the end of the sentence or not
     // Load up next choices (LOOP back) OR
     // go on to "end" state, passing final data in tree branch terminus

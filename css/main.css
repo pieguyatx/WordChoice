@@ -49,6 +49,7 @@ main {
 }
 .messageDisplay{
   font-size: 1.5em;
+  text-align: center;
 }
 .mainWindow{
   font-size: 2em;
