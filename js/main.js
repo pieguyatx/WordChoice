@@ -16,15 +16,22 @@
   //var choices = ["ChoiceA","ChoiceBisareallylongword","ChoiceC","ChoiceD"]; //DEBUG
   var numChoices = countElementsInObject(wordsAll);
   var choices = [];
+  var arrayOrder = [];
   for(let i=0; i<numChoices; i++){
     let propertyName = String.fromCharCode(i+65);
-    choices[i] = wordsAll[propertyName].word;
+    choices[i] = wordsAll[propertyName].word; // get word choices
+    arrayOrder[i] = i;  // initialize array to be shuffled later
   }
+  // Rearrange display order to be random
+  arrayOrder = shuffleArray(arrayOrder);
+
   for(let i=0; i<numChoices; i++){
     let outputData = choices[i];
     let choiceContainer = "<div class='choice"+i+"'>%data%</div>";
     outputData = choiceContainer.replace("%data%",outputData);
-    $(".mainWindow").append([outputData]);
+    $(".mainWindow").append([outputData]); // displays choices
+    // Reorder the choice according to random shuffle earlier
+    $(".choice"+i).css("order",arrayOrder[i]);
   }
     // animate?
 
@@ -42,7 +49,7 @@
     });
   }
 
-  // Find whether this is the end of the sentence or not
+  // Find whether there are any more choices or not
     // Load up next choices (LOOP back) OR
     // go on to "end" state, passing final data in tree branch terminus
 
@@ -73,3 +80,17 @@
     // shortest
     // going blue: has profanity or sex
     // mentions God, Lord, or Jesus
+
+/** http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
