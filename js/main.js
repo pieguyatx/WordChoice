@@ -20,9 +20,9 @@
     let propertyName = String.fromCharCode(i+65);
     choices[i] = wordsAll[propertyName].word;
   }
-  for(let i=0; i<choices.length; i++){
+  for(let i=0; i<numChoices; i++){
     let outputData = choices[i];
-    let choiceContainer = "<div class='choice'>%data%</div>";
+    let choiceContainer = "<div class='choice"+i+"'>%data%</div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]);
   }
@@ -30,9 +30,11 @@
 
 // Respond to choice -- LOOP
   // Read in user choice
-  $(".choice").click(function(){
-    alert("The paragraph was clicked.");
-  });
+  for(let i=0; i<numChoices; i++){
+    $(".choice"+i).click(function(){
+      alert("The paragraph for choice"+i+" was clicked.");
+    });
+  }
 
   function myFunctionMouseDown(elmnt, clr) {
       elmnt.style.color = clr;
