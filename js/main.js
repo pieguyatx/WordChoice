@@ -78,13 +78,15 @@ function offerChoices(objWordChoices){
       // Clear screen of old choices
       $(".mainWindow").empty();
       // Find whether there are any more choices deeper into the tree
-      // Are there more choices coming?
-      if(checkForNext(objWordChoices[chosenProperty])){
+      // [Are there more choices coming?, If not what's the ending info?]
+      var outputCheckForNext = checkForNext(objWordChoices[chosenProperty]);
+      if(outputCheckForNext[0]){
         // Read in the next set of choices for next cycle in while loop
         offerChoices(objWordChoices[chosenProperty].next);
       }
       else{
-        endState(objWordChoices[chosenProperty]);
+        //console.log(outputCheckForNext[1]); //DEBUG
+        endState(outputCheckForNext[1]);
       }
     });
   }
@@ -94,6 +96,7 @@ function offerChoices(objWordChoices){
 function checkForNext(obj){
   // Initial decision to show word choices or not
   var moreChoices = true;
+  var finalObj = obj;
   if(obj.hasOwnProperty("next")){
     // ...is there more than 1 choice in the "next" property?
     if(countElementsInObject(obj.next)>1){
@@ -106,16 +109,20 @@ function checkForNext(obj){
       // If there is only 1 choice, then ask the same questions to the next layer...
       //console.log(obj.word+": No more choices?"); // DEBUG
       // recursive function to set moreChoices DEBUG
-      moreChoices = checkForNext(obj.next.A);
+      let outputCheckForNext = checkForNext(obj.next.A);
+      moreChoices = outputCheckForNext[0];
+      finalObj = outputCheckForNext[1];
     }
   }
   // If no, then this is the last choice and last word. Go to "end" state
   else{
-    // Exit initial loop
+    // Exit initial loop; output that it's the end
     moreChoices = false;
     //console.log(obj.word+": The end is nigh!") // DEBUG
+    finalObj = obj;
   }
-  return moreChoices;
+  //console.log(finalObj); //DEBUG
+  return [moreChoices,finalObj];
 }
 
 /** http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -180,7 +187,7 @@ function analyzeURL(url) {
         ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
         ["blogger","blog"],["news","news"],["nytimes","news"],
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
-        ["biblehub","book"],["bloomberg","news"]
+        ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
         [".edu","general .org site"],
         [".org","general .org site"],
         [".com","general .com site"],
