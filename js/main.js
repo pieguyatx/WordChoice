@@ -18,8 +18,6 @@ $("header").on('click','.startOver',function(){
 // Set initial choices
 offerChoices(wordsAll);
 
-var moreChoices = true;
-
 
 // Load up next choices (LOOP back) OR
 // go on to "end" state, passing final data in tree branch terminus
@@ -80,14 +78,22 @@ function offerChoices(objWordChoices){
       // Clear screen of old choices
       $(".mainWindow").empty();
       // Find whether there are any more choices deeper into the tree
-      // Does choice have "next" property? If yes...
-      checkForNext(objWordChoices[chosenProperty]);
+      // Are there more choices coming?
+      if(checkForNext(objWordChoices[chosenProperty])){
+        // Read in the next set of choices for next cycle in while loop
+        offerChoices(objWordChoices[chosenProperty].next);
+      }
+      else{
+        endState(objWordChoices[chosenProperty]);
+      }
     });
   }
 }
 
-// Check if the given object is for the last word or not
+// Check if the given chosen word-object is for the last word or not
 function checkForNext(obj){
+  // Initial decision to show word choices or not
+  var moreChoices = true;
   if(obj.hasOwnProperty("next")){
     // ...is there more than 1 choice in the "next" property?
     if(countElementsInObject(obj.next)>1){
@@ -95,14 +101,12 @@ function checkForNext(obj){
       // Go to initial loop
       moreChoices = true;
       //console.log(obj.word+": There's more than 1 choice here"); // DEBUG
-      // Read in the next set of choices for next cycle in while loop
-      offerChoices(obj.next);
     }
     else if(countElementsInObject(obj.next)===1){
       // If there is only 1 choice, then ask the same questions to the next layer...
       //console.log(obj.word+": No more choices?"); // DEBUG
       // recursive function to set moreChoices DEBUG
-      checkForNext(obj.next.A);
+      moreChoices = checkForNext(obj.next.A);
     }
   }
   // If no, then this is the last choice and last word. Go to "end" state
@@ -110,8 +114,8 @@ function checkForNext(obj){
     // Exit initial loop
     moreChoices = false;
     //console.log(obj.word+": The end is nigh!") // DEBUG
-    endState(obj);
   }
+  return moreChoices;
 }
 
 /** http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -170,16 +174,13 @@ function analyzeURL(url) {
     var urlType = "unknown"; // default type
     // scan for keywords in the URL to make a best guess
     var urlAssignments = [  // hierarchical; earlier overrides later
-        ["youtube","video"],
-        ["books.google","book"],
-        ["facebook","social"],
-        ["forum","social"],
-        ["reddit","social"],
-        ["twitter","social"],
-        ["vimeo","video"],
-        ["pinterest","social"],
-        ["blogger","blog"],
-        ["news","news"],
+        ["youtube","video"],["books.google","book"],
+        ["facebook","social"],["forum","social"],["reddit","social"],
+        ["twitter","social"],["vimeo","video"],
+        ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
+        ["blogger","blog"],["news","news"],["nytimes","news"],
+        ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
+        ["biblehub","book"],["bloomberg","news"]
         [".edu","general .org site"],
         [".org","general .org site"],
         [".com","general .com site"],
