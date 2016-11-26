@@ -137,7 +137,8 @@ function endState(objFinal){
   // show final sentence
   $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
   // display link to internet
-  $(".messageDisplay").append(objFinal.link);
+  var domain = analyzeURL(objFinal.link);
+  $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain+"</a>");
   // calculate a score based on:
   // numHits (internet popularity)
   // year written or put on internet (age)
@@ -149,4 +150,21 @@ function endState(objFinal){
   // Thanks for playing
   // display a SHARE button (Twitter, Facebook, Email)
   // emphasize the START OVER button
+}
+
+
+// Get Domain and web type
+// partly from http://stackoverflow.com/questions/8498592/extract-root-domain-name-from-string
+function analyzeURL(url) {
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    }
+    else {
+        domain = url.split('/')[0];
+    }
+    //find & remove port number
+    domain = domain.split(':')[0];
+    return domain;
 }
