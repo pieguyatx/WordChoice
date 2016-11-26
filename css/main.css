@@ -63,6 +63,10 @@ main {
 .achievementsButton{
   text-align: right;
 }
+.finalSentence{
+  text-align: center;
+}
+
 
 .debugOutput {
   color: red;

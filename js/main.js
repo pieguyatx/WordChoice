@@ -25,19 +25,6 @@ var moreChoices = true;
 // go on to "end" state, passing final data in tree branch terminus
 
 // Display end state
-// show final sentence
-// display link to internet
-// calculate a score based on:
-// numHits (internet popularity)
-// year written or put on internet (age)
-// media type (video, social, blog, news, etc)
-// number of words in sentence
-// ?past tries
-// ?popularity of click compared to other players?
-// display witty comment on score? graphic?
-// Thanks for playing
-// display a SHARE button (Twitter, Facebook, Email)
-// emphasize the START OVER button
 // Use cookies to record score, sentences, history, etc???
 
 // ? History / high scores? / Achievements?
@@ -94,26 +81,36 @@ function offerChoices(objWordChoices){
       $(".mainWindow").empty();
       // Find whether there are any more choices deeper into the tree
       // Does choice have "next" property? If yes...
-      if(objWordChoices[chosenProperty].hasOwnProperty("next")){
-        // ...is there more than 1 choice in the "next" property?
-        if(countElementsInObject(objWordChoices[chosenProperty].next)>1){
-          // If there is more than 1 choice, then display choices like normal
-          // Go to initial loop
-          moreChoices = true;
-          // Read in the next set of choices for next cycle in while loop
-          offerChoices(objWordChoices[chosenProperty].next);
-        }
-        else if(countElementsInObject(objWordChoices[chosenProperty].next)===1){
-          // If there is only 1 choice, then ask the same questions to the next layer...
-          // recursive function to set moreChoices DEBUG
-        }
-      }
-      // If no, then this is the last choice and last word. Go to "end" state
-      else{
-        // Exit initial loop
-        moreChoices = false;
-      }
+      checkForNext(objWordChoices[chosenProperty]);
     });
+  }
+}
+
+// Check if the given object is for the last word or not
+function checkForNext(obj){
+  if(obj.hasOwnProperty("next")){
+    // ...is there more than 1 choice in the "next" property?
+    if(countElementsInObject(obj.next)>1){
+      // If there is more than 1 choice, then display choices like normal
+      // Go to initial loop
+      moreChoices = true;
+      //console.log(obj.word+": There's more than 1 choice here"); // DEBUG
+      // Read in the next set of choices for next cycle in while loop
+      offerChoices(obj.next);
+    }
+    else if(countElementsInObject(obj.next)===1){
+      // If there is only 1 choice, then ask the same questions to the next layer...
+      //console.log(obj.word+": No more choices?"); // DEBUG
+      // recursive function to set moreChoices DEBUG
+      checkForNext(obj.next.A);
+    }
+  }
+  // If no, then this is the last choice and last word. Go to "end" state
+  else{
+    // Exit initial loop
+    moreChoices = false;
+    //console.log(obj.word+": The end is nigh!") // DEBUG
+    endState(obj);
   }
 }
 
@@ -129,4 +126,27 @@ function shuffleArray(array) {
         array[j] = temp;
     }
     return array;
+}
+
+
+// End State
+function endState(objFinal){
+  // clear main section - animate?
+  $(".messageDisplay").empty();
+  $(".mainWindow").empty();
+  // show final sentence
+  $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
+  // display link to internet
+  $(".messageDisplay").append(objFinal.link);
+  // calculate a score based on:
+  // numHits (internet popularity)
+  // year written or put on internet (age)
+  // media type (video, social, blog, news, etc)
+  // number of words in sentence
+  // ?past tries
+  // ?popularity of click compared to other players?
+  // display witty comment on score? graphic?
+  // Thanks for playing
+  // display a SHARE button (Twitter, Facebook, Email)
+  // emphasize the START OVER button
 }
