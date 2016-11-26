@@ -148,8 +148,13 @@ function endState(objFinal){
   // show final sentence
   $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
   // display link to internet
-  var domain = analyzeURL(objFinal.link);
-  $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain[0]+"</a>");
+  var outputAnalyzeURL = analyzeURL(objFinal.link);
+  var domain = outputAnalyzeURL[0];
+  var urlType = outputAnalyzeURL[1];
+  var extension = outputAnalyzeURL[2];
+  $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain+"</a>");
+  console.log("URL Type: " + urlType); // DEBUG
+  console.log("Extension: " + extension); // DEBUG
   // calculate a score based on:
   // numHits (internet popularity)
   // year written or put on internet (age)
@@ -177,8 +182,9 @@ function analyzeURL(url) {
     }
     //find & remove port number
     domain = domain.split(':')[0];
+
     // assign a type if possible
-    var urlType = "unknown"; // default type
+    var urlType = "other"; // default type
     // scan for keywords in the URL to make a best guess
     var urlAssignments = [  // hierarchical; earlier overrides later
         ["youtube","video"],["books.google","book"],
@@ -188,9 +194,7 @@ function analyzeURL(url) {
         ["blogger","blog"],["news","news"],["nytimes","news"],
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
         ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
-        [".edu","general .org site"],
-        [".org","general .org site"],
-        [".com","general .com site"],
+        ["theguardian","news"],
       ];
     for(let i=0; i<urlAssignments.length; i++){
       if (url.toLowerCase().indexOf(urlAssignments[i][0]) != -1){
@@ -199,6 +203,20 @@ function analyzeURL(url) {
         break;
       }
     }
-    console.log("URL Type: " + urlType); // DEBUG
-    return [domain,urlType];
+
+    // assign the extension if possible
+    var extension = "other"; // default type
+    // scan for keywords in the URL to make a best guess
+    var extensionAssignments = [
+      ".edu", ".mil",".org",".gov",".com",".net",".info",".us",".uk"
+    ];
+    for(let i=0; i<extensionAssignments.length; i++){
+      if (url.toLowerCase().indexOf(extensionAssignments[i]) != -1){
+        // match found; stop searching
+        extension = extensionAssignments[i];
+        break;
+      }
+    }
+
+    return [domain,urlType,extension];
 }
