@@ -138,7 +138,7 @@ function endState(objFinal){
   $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
   // display link to internet
   var domain = analyzeURL(objFinal.link);
-  $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain+"</a>");
+  $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain[0]+"</a>");
   // calculate a score based on:
   // numHits (internet popularity)
   // year written or put on internet (age)
@@ -166,5 +166,31 @@ function analyzeURL(url) {
     }
     //find & remove port number
     domain = domain.split(':')[0];
-    return domain;
+    // assign a type if possible
+    var urlType = "unknown"; // default type
+    // scan for keywords in the URL to make a best guess
+    var urlAssignments = [  // hierarchical; earlier overrides later
+        ["youtube","video"],
+        ["books.google","book"],
+        ["facebook","social"],
+        ["forum","social"],
+        ["reddit","social"],
+        ["twitter","social"],
+        ["vimeo","video"],
+        ["pinterest","social"],
+        ["blogger","blog"],
+        ["news","news"],
+        [".edu","general .org site"],
+        [".org","general .org site"],
+        [".com","general .com site"],
+      ];
+    for(let i=0; i<urlAssignments.length; i++){
+      if (url.toLowerCase().indexOf(urlAssignments[i][0]) != -1){
+        // match found; stop searching
+        urlType = urlAssignments[i][1];
+        break;
+      }
+    }
+    console.log("URL Type: " + urlType); // DEBUG
+    return [domain,urlType];
 }
