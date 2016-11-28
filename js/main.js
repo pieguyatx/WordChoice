@@ -152,22 +152,43 @@ function endState(objFinal){
   var domain = outputAnalyzeURL[0];
   var urlType = outputAnalyzeURL[1];
   var extension = outputAnalyzeURL[2];
+  var urlLength = outputAnalyzeURL[3];
   $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain+"</a>");
   console.log("URL Type: " + urlType); // DEBUG
   console.log("Extension: " + extension); // DEBUG
-  // calculate a score based on:
-  // numHits (internet popularity)
-  // year written or put on internet (age)
-  // media type (video, social, blog, news, etc)
-  // number of words in sentence
-  // ?past tries
-  // ?popularity of click compared to other players?
+  console.log("URL Length: " + urlLength); //DEBUG
+  // Calculate score
+  calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength);
+  // Update score history & achievements
+    // Does sentence go blue?
+    // Does sentence relate to religious words?
   // display witty comment on score? graphic?
+  // Save data for achievements
   // Thanks for playing
   // display a SHARE button (Twitter, Facebook, Email)
   // emphasize the START OVER button
 }
 
+// Calculate a score based on:
+// numHits (internet popularity)
+// year written or put on internet (age)
+// media type (video, social, blog, news, etc)
+// number of words in sentence
+// ?past tries
+// ?popularity of click compared to other players?
+function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
+  // length: Longer sentence = more points
+  // brevity: Shorter sentence = more points
+  // popularity: More hits = more points
+  // uniqueness: Fewer hits = more points
+  // history: older = more points
+  // newness: newer = more points
+  // literary: books and news = more points
+  // unique domain = odd / more points
+  // url complexity: longer =  more points
+  // output score object:
+    // overallScore, and scores for each of the above measures
+}
 
 // Get Domain and web type
 // partly from http://stackoverflow.com/questions/8498592/extract-root-domain-name-from-string
@@ -218,5 +239,8 @@ function analyzeURL(url) {
       }
     }
 
-    return [domain,urlType,extension];
+    // Find URL length
+    var urlLength = url.length;
+
+    return [domain,urlType,extension,urlLength];
 }
