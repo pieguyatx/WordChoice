@@ -153,7 +153,7 @@ function endState(objFinal){
   var urlType = outputAnalyzeURL[1];
   var extension = outputAnalyzeURL[2];
   var urlLength = outputAnalyzeURL[3];
-  $(".messageDisplay").append("<a href='"+objFinal.link+"'>"+domain+"</a>");
+  $(".messageDisplay").append("<a href='"+objFinal.link+"' target='_blank'>"+domain+"</a>");
   console.log("URL Type: " + urlType); // DEBUG
   console.log("Extension: " + extension); // DEBUG
   console.log("URL Length: " + urlLength); //DEBUG
