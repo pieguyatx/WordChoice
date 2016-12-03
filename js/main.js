@@ -18,7 +18,8 @@ $("header").on('click','.startOver',function(){
 // Set initial choices
 offerChoices(wordsAll);
 // Set initial score(s)
-$("#scoreHigh").append("&nbsp;" + 0);
+var scoreHigh = 0;
+$("#scoreHigh").append("&nbsp;" + scoreHigh);
 
 // Load up next choices (LOOP back) OR
 // go on to "end" state, passing final data in tree branch terminus
@@ -159,8 +160,16 @@ function endState(objFinal){
   console.log("Extension: " + extension); // DEBUG
   console.log("URL Length: " + urlLength); //DEBUG
   // Calculate score
-  calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength);
-  // Update score history & achievements
+  [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
+    sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall] =
+    calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength);
+  // Update score history & achievements -- do this with for loop & array?
+  // Update overall score
+  if (sOverall > scoreHigh){
+    $("#scoreHigh").empty();
+    scoreHigh = sOverall;
+    $("#scoreHigh").append("&nbsp;" + scoreHigh);
+  }
     // Does sentence go blue?
     // Does sentence relate to religious words?
   // display witty comment on score? graphic?
@@ -178,17 +187,24 @@ function endState(objFinal){
 // ?past tries
 // ?popularity of click compared to other players?
 function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
+  // Set default scores
+  [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
+    sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall] =
+    [0,0,0,0,0,0,0,0,0,0,10];
   // length: Longer sentence = more points
   // brevity: Shorter sentence = more points
   // popularity: More hits = more points
   // uniqueness: Fewer hits = more points
   // history: older = more points
   // newness: newer = more points
-  // literary: books and news = more points
-  // unique domain = odd / more points
-  // url complexity: longer =  more points
+  // media: books and news = more points, etc; score by media type
+  // urlDomain = odd / more points
+  // urlComplexity: longer =  more points
+  // urlSimplicity: longer =  more points
   // output score object:
-    // overallScore, and scores for each of the above measures
+    // overallScore, and scores for each of the above measures (based on Excel analysis)
+    return [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
+      sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall];
 }
 
 // Get Domain and web type
