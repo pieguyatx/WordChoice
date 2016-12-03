@@ -17,7 +17,8 @@ $("header").on('click','.startOver',function(){
 
 // Set initial choices
 offerChoices(wordsAll);
-
+// Set initial score(s)
+$("#scoreHigh").append("&nbsp;" + 0);
 
 // Load up next choices (LOOP back) OR
 // go on to "end" state, passing final data in tree branch terminus
@@ -212,10 +213,10 @@ function analyzeURL(url) {
         ["facebook","social"],["forum","social"],["reddit","social"],
         ["twitter","social"],["vimeo","video"],
         ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
-        ["blogger","blog"],["news","news"],["nytimes","news"],
+        ["blogger","blog"],["news","news"],
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
         ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
-        ["theguardian","news"],
+        ["theguardian","news"],["times.com","news"],
       ];
     for(let i=0; i<urlAssignments.length; i++){
       if (url.toLowerCase().indexOf(urlAssignments[i][0]) != -1){

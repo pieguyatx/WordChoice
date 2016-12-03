@@ -63,8 +63,13 @@ main {
   flex-grow: 1;
   padding: 1em;
 }
-.achievementsButton{
-  text-align: right;
+.achievements{
+  text-align: left;
+  font-weight: bold;
+}
+.achievement{
+  font-size: 0.8em;
+  display: flex;
 }
 .finalSentence{
   text-align: center;
