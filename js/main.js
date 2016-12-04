@@ -208,14 +208,36 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   [sPopularity, sUniqueness] = calculateScorePopularity(numHits);
   // history: older = more points
   // newness: newer = more points
+  [sHistory, sNewness] = calculateScoreHistory(year);
   // media: books and news = more points, etc; score by media type
   // urlDomain = odd / more points
   // urlComplexity: longer =  more points
   // urlSimplicity: longer =  more points
   // overallScore, and scores for each of the above measures (based on Excel analysis)
-  sOverall = sLength + sBrevity + sPopularity + sUniqueness;
+  sOverall = sLength + sBrevity + sPopularity + sUniqueness +
+    sHistory + sNewness;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
+}
+
+// Calculate scores for history and newness of sentence
+function calculateScoreHistory(year){
+  var sHistory = 0;
+  var sNewness = 0;
+  var currentYear = new Date().getFullYear();
+  if(year===currentYear){sNewness=50;}
+  else if(currentYear-year===1){sNewness=25;}
+  else if(currentYear-year===2){sNewness=5;}
+  else if(currentYear-year>9){
+    if(year<1800){sHistory=100;}
+    else if(year<1850){sHistory=99;}
+    else if(year<1900){sHistory=98;}
+    else if(year<1950){sHistory=94;}
+    else if(year<2000){sHistory=75;}
+    else if(year<2005){sHistory=50;}
+    else{sHistory=15;}
+  }
+  return [sHistory, sNewness];
 }
 
 // Calculate scores for popularity and uniqueness of sentence
