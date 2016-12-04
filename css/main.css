@@ -66,6 +66,11 @@ main {
 .achievements{
   text-align: left;
   font-weight: bold;
+  display: flex;
+}
+.achievement{
+  font-weight: normal;
+  padding-left: 0.5em;
 }
 .scores{
   font-size: 0.8em;
@@ -73,7 +78,7 @@ main {
   padding-left: 1em;
 }
 .score{
-  padding-left: 0.1em;
+  padding-left: .5em;
 }
 .finalSentence{
   text-align: center;

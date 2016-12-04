@@ -11,6 +11,8 @@ $("header").on('click','.startOver',function(){
   $(".messageDisplay").empty();
   $(".mainWindow").empty();
   offerChoices(wordsAll);
+  $(".achievements").empty();
+  $(".achievements").append("ACHIEVEMENTS");
 });
     // constant mouse listener (keyboard option?)
   // ??history / high scores? / achievements? badges?
@@ -160,18 +162,25 @@ function endState(objFinal){
   //console.log("Extension: " + extension); // DEBUG
   //console.log("URL Length: " + urlLength); //DEBUG
   // Calculate score
-  [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
-    sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall] =
+  var scores =
     calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength);
   // Update score history & achievements -- do this with for loop & array?
   // Update overall score
-  if (sOverall > scoreHigh){
+  if (scores[0] > scoreHigh){
     $("#scoreHigh").empty();
     scoreHigh = sOverall;
     $("#scoreHigh").append(scoreHigh);
   }
     // Does sentence go blue?
     // Does sentence relate to religious words?
+  // Display achievements (to be cleared when restarting)
+  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Unique Domain", "URL Complexity", "URL Simplicity"];
+  var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity"];
+  for(let i=1; i<scores.length; i++){
+    if(scores[i]>0){
+      $(".achievements").append("<div class='achievement' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
+    }
+  }
   // display witty comment on score? graphic?
   // Save data for achievements
   // Thanks for playing
@@ -188,9 +197,9 @@ function endState(objFinal){
 // ?popularity of click compared to other players?
 function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   // Set default scores
-  [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
-    sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall] =
-    [0,0,0,0,0,0,0,0,0,0,10];
+  [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
+    sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity] =
+    [10,0,0,0,0,0,0,0,0,0,0];
   // length: Longer sentence = more points
   // brevity: Shorter sentence = more points
   [sLength, sBrevity] = calculateScoreLength(numWords);
@@ -204,8 +213,8 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   // urlSimplicity: longer =  more points
   // overallScore, and scores for each of the above measures (based on Excel analysis)
   sOverall = sLength + sBrevity;
-  return [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
-    sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall];
+  return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
+    sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
 }
 
 // Calculate scores for length and brevity of sentence
