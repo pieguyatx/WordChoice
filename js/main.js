@@ -225,7 +225,7 @@ function calculateScoreHistory(year){
   var sHistory = 0;
   var sNewness = 0;
   var currentYear = new Date().getFullYear();
-  if(year===currentYear){sNewness=50;}
+  if(year===currentYear){sNewness=40;}
   else if(currentYear-year===1){sNewness=25;}
   else if(currentYear-year===2){sNewness=5;}
   else if(currentYear-year>9){
