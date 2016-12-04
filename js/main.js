@@ -174,7 +174,7 @@ function endState(objFinal){
     // Does sentence go blue?
     // Does sentence relate to religious words?
   // Display achievements (to be cleared when restarting)
-  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "URL Complexity", "URL Simplicity"];
+  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Long URL", "Short URL"];
   var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity"];
   for(let i=1; i<scores.length; i++){
     if(scores[i]>0){
@@ -199,13 +199,29 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   [sHistory, sNewness] = calculateScoreHistory(year);
   sMedia = calculateScoreMedia(urlType);
   surlDomain = calculateScoreDomain(extension);
-  // urlComplexity: longer =  more points
-  // urlSimplicity: longer =  more points
-  // overallScore, and scores for each of the above measures (based on Excel analysis)
+  [surlComplexity, surlSimplicity] = calculateScoreURL(urlLength);
   sOverall = sLength + sBrevity + sPopularity + sUniqueness +
     sHistory + sNewness + sMedia + surlDomain + surlComplexity + surlSimplicity;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
+}
+
+// Calculate score based on URL length
+function calculateScoreURL(urlLength){
+  var surlComplexity = 0;
+  var surlSimplicity = 0;
+  if(urlLength<72){
+    if(urlLength<38){surlSimplicity=34;}
+    else if(urlLength<56){surlSimplicity=15;}
+    else{surlSimplicity=5;}
+  }
+  else if(urlLength>294){
+    if(urlLength>345){surlSimplicity=39;}
+    else if(urlLength>329){surlSimplicity=35;}
+    else if(urlLength>312){surlSimplicity=30;}
+    else{surlSimplicity=20;}
+  }
+  return [surlComplexity, surlSimplicity];
 }
 
 // Calcualte score based one URL domain
