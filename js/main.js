@@ -205,6 +205,7 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   [sLength, sBrevity] = calculateScoreLength(numWords);
   // popularity: More hits = more points
   // uniqueness: Fewer hits = more points
+  [sPopularity, sUniqueness] = calculateScorePopularity(numHits);
   // history: older = more points
   // newness: newer = more points
   // media: books and news = more points, etc; score by media type
@@ -215,6 +216,33 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   sOverall = sLength + sBrevity;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
+}
+
+// Calculate scores for popularity and uniqueness of sentence
+function calculateScorePopularity(numHits){
+  var sPopularity = 0;
+  var sUniqueness = 0;
+  if(numHits>1000){
+    if(numHits>10000000){sPopularity=93;}
+    else if(numHits>1000000){sPopularity=88;}
+    else if(numHits>100000){sPopularity=79;}
+    else if(numHits>10000){sPopularity=50;}
+    else{sPopularity=10;}
+  }
+  else if(numHits<100){
+    if(numHits<2){sUniqueness=90;}
+    else if(numHits<3){sUniqueness=80;}
+    else if(numHits<4){sUniqueness=70;}
+    else if(numHits<5){sUniqueness=60;}
+    else if(numHits<6){sUniqueness=50;}
+    else if(numHits<7){sUniqueness=40;}
+    else if(numHits<8){sUniqueness=30;}
+    else if(numHits<9){sUniqueness=20;}
+    else if(numHits<10){sUniqueness=10;}
+    else if(numHits<50){sUniqueness=5;}
+    else{sUniqueness=3;}
+  }
+  return [sPopularity, sUniqueness];
 }
 
 // Calculate scores for length and brevity of sentence
