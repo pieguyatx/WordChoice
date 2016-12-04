@@ -67,9 +67,13 @@ main {
   text-align: left;
   font-weight: bold;
 }
-.achievement{
+.scores{
   font-size: 0.8em;
   display: flex;
+  padding-left: 1em;
+}
+.score{
+  padding-left: 0.1em;
 }
 .finalSentence{
   text-align: center;

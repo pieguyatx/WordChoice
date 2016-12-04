@@ -156,9 +156,9 @@ function endState(objFinal){
   var extension = outputAnalyzeURL[2];
   var urlLength = outputAnalyzeURL[3];
   $(".messageDisplay").append("<a href='"+objFinal.link+"' target='_blank'>"+domain+"</a>");
-  console.log("URL Type: " + urlType); // DEBUG
-  console.log("Extension: " + extension); // DEBUG
-  console.log("URL Length: " + urlLength); //DEBUG
+  //console.log("URL Type: " + urlType); // DEBUG
+  //console.log("Extension: " + extension); // DEBUG
+  //console.log("URL Length: " + urlLength); //DEBUG
   // Calculate score
   [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
     sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall] =
@@ -168,7 +168,7 @@ function endState(objFinal){
   if (sOverall > scoreHigh){
     $("#scoreHigh").empty();
     scoreHigh = sOverall;
-    $("#scoreHigh").append("&nbsp;" + scoreHigh);
+    $("#scoreHigh").append(scoreHigh);
   }
     // Does sentence go blue?
     // Does sentence relate to religious words?
@@ -193,6 +193,7 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
     [0,0,0,0,0,0,0,0,0,0,10];
   // length: Longer sentence = more points
   // brevity: Shorter sentence = more points
+  [sLength, sBrevity] = calculateScoreLength(numWords);
   // popularity: More hits = more points
   // uniqueness: Fewer hits = more points
   // history: older = more points
@@ -201,10 +202,35 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   // urlDomain = odd / more points
   // urlComplexity: longer =  more points
   // urlSimplicity: longer =  more points
-  // output score object:
-    // overallScore, and scores for each of the above measures (based on Excel analysis)
-    return [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
-      sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall];
+  // overallScore, and scores for each of the above measures (based on Excel analysis)
+  sOverall = sLength + sBrevity;
+  return [sLength, sBrevity, sPopularity, sUniqueness, sHistory, sNewness,
+    sMedia, surlDomain, surlComplexity, surlSimplicity, sOverall];
+}
+
+// Calculate scores for length and brevity of sentence
+function calculateScoreLength(numWords){
+  var sLength = 0;
+  var sBrevity = 0;
+  if(numWords<11){
+    if(numWords<3){sBrevity=100;}
+    else if(numWords<3){sBrevity=95;}
+    else if(numWords<5){sBrevity=66;}
+    else if(numWords<8){sBrevity=28;}
+    else{sBrevity=6;}
+  }
+  else if(numWords>13){
+    if(numWords>38){sLength=97;}
+    else if(numWords>35){sLength=96;}
+    else if(numWords>32){sLength=94;}
+    else if(numWords>27){sLength=91;}
+    else if(numWords>24){sLength=90;}
+    else if(numWords>21){sLength=79;}
+    else if(numWords>18){sLength=69;}
+    else if(numWords>16){sLength=61;}
+    else{sLength=19;}
+  }
+  return [sLength, sBrevity];
 }
 
 // Get Domain and web type
