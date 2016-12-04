@@ -174,7 +174,7 @@ function endState(objFinal){
     // Does sentence go blue?
     // Does sentence relate to religious words?
   // Display achievements (to be cleared when restarting)
-  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Unique Domain", "URL Complexity", "URL Simplicity"];
+  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "URL Complexity", "URL Simplicity"];
   var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity"];
   for(let i=1; i<scores.length; i++){
     if(scores[i]>0){
@@ -198,16 +198,31 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   [sPopularity, sUniqueness] = calculateScorePopularity(numHits);
   [sHistory, sNewness] = calculateScoreHistory(year);
   sMedia = calculateScoreMedia(urlType);
-  // urlDomain = odd / more points
+  surlDomain = calculateScoreDomain(extension);
   // urlComplexity: longer =  more points
   // urlSimplicity: longer =  more points
   // overallScore, and scores for each of the above measures (based on Excel analysis)
   sOverall = sLength + sBrevity + sPopularity + sUniqueness +
-    sHistory + sNewness;
+    sHistory + sNewness + sMedia + surlDomain + surlComplexity + surlSimplicity;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
 }
 
+// Calcualte score based one URL domain
+function calculateScoreDomain(topLevelDomain){
+  var surlDomain = 0;
+  if(topLevelDomain===".edu"){surlDomain=98;}
+  else if(topLevelDomain===".mil"){surlDomain=99;}
+  else if(topLevelDomain===".org"){surlDomain=89;}
+  else if(topLevelDomain===".gov"){surlDomain=99;}
+  else if(topLevelDomain===".net"){surlDomain=98;}
+  else if(topLevelDomain===".info"){surlDomain=99;}
+  else if(topLevelDomain===".us"){surlDomain=99;}
+  else if(topLevelDomain===".uk"){surlDomain=98;}
+  return surlDomain;
+}
+
+// Calculate score for media type
 function calculateScoreMedia(urlType){
   var sMedia = 0; // default for urlType='other'
   if(urlType==="book"){sMedia=80;}
