@@ -188,28 +188,16 @@ function endState(objFinal){
   // emphasize the START OVER button
 }
 
-// Calculate a score based on:
-// numHits (internet popularity)
-// year written or put on internet (age)
-// media type (video, social, blog, news, etc)
-// number of words in sentence
-// ?past tries
-// ?popularity of click compared to other players?
+// Calculate a score
 function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   // Set default scores
   [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity] =
     [10,0,0,0,0,0,0,0,0,0,0];
-  // length: Longer sentence = more points
-  // brevity: Shorter sentence = more points
   [sLength, sBrevity] = calculateScoreLength(numWords);
-  // popularity: More hits = more points
-  // uniqueness: Fewer hits = more points
   [sPopularity, sUniqueness] = calculateScorePopularity(numHits);
-  // history: older = more points
-  // newness: newer = more points
   [sHistory, sNewness] = calculateScoreHistory(year);
-  // media: books and news = more points, etc; score by media type
+  sMedia = calculateScoreMedia(urlType);
   // urlDomain = odd / more points
   // urlComplexity: longer =  more points
   // urlSimplicity: longer =  more points
@@ -218,6 +206,15 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
     sHistory + sNewness;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
+}
+
+function calculateScoreMedia(urlType){
+  var sMedia = 0; // default for urlType='other'
+  if(urlType==="book"){sMedia=80;}
+  else if(urlType==="video"){sMedia=90;}
+  else if(urlType==="social"){sMedia=87;}
+  else if(urlType==="news"){sMedia=94;}
+  return sMedia;
 }
 
 // Calculate scores for history and newness of sentence
