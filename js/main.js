@@ -213,7 +213,7 @@ function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
   // urlComplexity: longer =  more points
   // urlSimplicity: longer =  more points
   // overallScore, and scores for each of the above measures (based on Excel analysis)
-  sOverall = sLength + sBrevity;
+  sOverall = sLength + sBrevity + sPopularity + sUniqueness;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
     sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
 }
