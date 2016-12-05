@@ -183,7 +183,7 @@ function calculateScore(numWords, numHits, year, urlType, extension, urlLength, 
   sMedia = calculateScoreMedia(urlType);
   surlDomain = calculateScoreDomain(extension);
   [surlComplexity, surlSimplicity] = calculateScoreURL(urlLength);
-  sGoingBlue = calculateScoreGoingBlue(sentence);
+  sGoingBlue = calculateScoreGoingBlue(sentence,domain);
   sOverall = sLength + sBrevity + sPopularity + sUniqueness +
     sHistory + sNewness + sMedia + surlDomain + surlComplexity + surlSimplicity +
     sGoingBlue + sReligious;
@@ -192,14 +192,21 @@ function calculateScore(numWords, numHits, year, urlType, extension, urlLength, 
     sGoingBlue, sReligious];
 }
 
-// Calculate score based on if sentence goes blue
-function calculateScoreGoingBlue(sentence){
+// Calculate score based on if sentence or URL goes blue
+function calculateScoreGoingBlue(sentence,domain){
   var sGoingBlue = 0;
   var wordsToCheck = ["sex", "dick", "damn", "shit", " hell ", "fuck", " ass "];
   for(let i=0; i<wordsToCheck.length; i++){
     if (sentence.toLowerCase().indexOf(wordsToCheck[i]) != -1){
       // match found; stop searching
       sGoingBlue = 50;
+      break;
+    }
+  }
+  for(let i=0; i<wordsToCheck.length; i++){
+    if (domain.toLowerCase().indexOf(wordsToCheck[i]) != -1){
+      // match found; stop searching
+      sGoingBlue = sGoingBlue + 50;
       break;
     }
   }
