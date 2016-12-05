@@ -135,19 +135,17 @@ function endState(objFinal){
   $(".mainWindow").empty();
   // show final sentence
   $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
-  // display link to internet
+  // Analyze URL qualities
   var outputAnalyzeURL = analyzeURL(objFinal.link);
   var domain = outputAnalyzeURL[0];
   var urlType = outputAnalyzeURL[1];
   var extension = outputAnalyzeURL[2];
   var urlLength = outputAnalyzeURL[3];
+  // display link to internet
   $(".messageDisplay").append("<a href='"+objFinal.link+"' target='_blank'>"+domain+"</a>");
-  //console.log("URL Type: " + urlType); // DEBUG
-  //console.log("Extension: " + extension); // DEBUG
-  //console.log("URL Length: " + urlLength); //DEBUG
   // Calculate score
   var scores =
-    calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength);
+    calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength,objFinal.sentence,domain);
   // Update score history & achievements -- do this with for loop & array?
   // Update overall score
   if (scores[0] > scoreHigh){
@@ -158,8 +156,8 @@ function endState(objFinal){
     // Does sentence go blue?
     // Does sentence relate to religious words?
   // Display achievements (to be cleared when restarting)
-  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Long URL", "Short URL"];
-  var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity"];
+  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Long URL", "Short URL","Going Blue","Religious"];
+  var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity","sGoingBlue","sReligious"];
   for(let i=1; i<scores.length; i++){
     if(scores[i]>0){
       $(".achievements").append("<div class='achievement' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
@@ -173,21 +171,39 @@ function endState(objFinal){
 }
 
 // Calculate a score
-function calculateScore(numWords,numHits,year,urlType,extension,urlLength){
+function calculateScore(numWords, numHits, year, urlType, extension, urlLength, sentence, domain){
   // Set default scores
   [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
-    sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity] =
-    [10,0,0,0,0,0,0,0,0,0,0];
+    sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity,
+    sGoingBlue, sReligious] =
+    [10,0,0,0,0,0,0,0,0,0,0,0,0];
   [sLength, sBrevity] = calculateScoreLength(numWords);
   [sPopularity, sUniqueness] = calculateScorePopularity(numHits);
   [sHistory, sNewness] = calculateScoreHistory(year);
   sMedia = calculateScoreMedia(urlType);
   surlDomain = calculateScoreDomain(extension);
   [surlComplexity, surlSimplicity] = calculateScoreURL(urlLength);
+  sGoingBlue = calculateScoreGoingBlue(sentence);
   sOverall = sLength + sBrevity + sPopularity + sUniqueness +
-    sHistory + sNewness + sMedia + surlDomain + surlComplexity + surlSimplicity;
+    sHistory + sNewness + sMedia + surlDomain + surlComplexity + surlSimplicity +
+    sGoingBlue + sReligious;
   return [sOverall, sLength, sBrevity, sPopularity, sUniqueness, sHistory,
-    sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity];
+    sNewness,sMedia, surlDomain, surlComplexity, surlSimplicity,
+    sGoingBlue, sReligious];
+}
+
+// Calculate score based on if sentence goes blue
+function calculateScoreGoingBlue(sentence){
+  var sGoingBlue = 0;
+  var wordsToCheck = ["sex", "dick", "damn", "shit", " hell ", "fuck"];
+  for(let i=0; i<wordsToCheck.length; i++){
+    if (sentence.toLowerCase().indexOf(wordsToCheck[i]) != -1){
+      // match found; stop searching
+      sGoingBlue = 50;
+      break;
+    }
+  }
+  return sGoingBlue;
 }
 
 // Calculate score based on URL length
