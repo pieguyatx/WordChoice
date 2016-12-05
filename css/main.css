@@ -75,11 +75,11 @@ main {
   flex-wrap: wrap;
 }
 .achievement{
-  font-weight: normal;
+  font-weight: bold;
   padding-left: 0.5em;
 }
 #sOverall{
-  font-weight: bold;
+  color: red;
 }
 .scores{
   font-size: 0.8em;
