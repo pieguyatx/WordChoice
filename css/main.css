@@ -66,11 +66,20 @@ main {
 .achievements{
   text-align: left;
   font-weight: bold;
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* Safari */
   display: flex;
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  flex-wrap: wrap;
 }
 .achievement{
   font-weight: normal;
   padding-left: 0.5em;
+}
+#sOverall{
+  font-weight: bold;
 }
 .scores{
   font-size: 0.8em;

@@ -153,16 +153,16 @@ function endState(objFinal){
     scoreHigh = sOverall;
     $("#scoreHigh").append(scoreHigh);
   }
-    // Does sentence go blue?
-    // Does sentence relate to religious words?
   // Display achievements (to be cleared when restarting)
-  var msgAchievement=["High Overall Score","Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Long URL", "Short URL","Going Blue","Religious"];
+  var msgAchievement=["Overall Score", "Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Complex URL", "Simple URL","Going Blue","Religious"];
   var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity","sGoingBlue","sReligious"];
   for(let i=1; i<scores.length; i++){
     if(scores[i]>0){
       $(".achievements").append("<div class='achievement' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
     }
   }
+  // Give overall score
+  $(".achievements").append("<div class='achievement' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
   // display witty comment on score? graphic?
   // Save data for achievements
   // Thanks for playing
@@ -195,7 +195,7 @@ function calculateScore(numWords, numHits, year, urlType, extension, urlLength, 
 // Calculate score based on if sentence goes blue
 function calculateScoreGoingBlue(sentence){
   var sGoingBlue = 0;
-  var wordsToCheck = ["sex", "dick", "damn", "shit", " hell ", "fuck"];
+  var wordsToCheck = ["sex", "dick", "damn", "shit", " hell ", "fuck", " ass "];
   for(let i=0; i<wordsToCheck.length; i++){
     if (sentence.toLowerCase().indexOf(wordsToCheck[i]) != -1){
       // match found; stop searching
@@ -216,10 +216,10 @@ function calculateScoreURL(urlLength){
     else{surlSimplicity=5;}
   }
   else if(urlLength>294){
-    if(urlLength>345){surlSimplicity=39;}
-    else if(urlLength>329){surlSimplicity=35;}
-    else if(urlLength>312){surlSimplicity=30;}
-    else{surlSimplicity=20;}
+    if(urlLength>345){surlComplexity=39;}
+    else if(urlLength>329){surlComplexity=35;}
+    else if(urlLength>312){surlComplexity=30;}
+    else{surlComplexity=20;}
   }
   return [surlComplexity, surlSimplicity];
 }
