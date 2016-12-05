@@ -14,32 +14,16 @@ $("header").on('click','.startOver',function(){
   $(".achievements").empty();
   $(".achievements").append("ACHIEVEMENTS");
 });
-    // constant mouse listener (keyboard option?)
-  // ??history / high scores? / achievements? badges?
 
 // Set initial choices
 offerChoices(wordsAll);
 // Set initial score(s)
 var scoreHigh = 0;
-$("#scoreHigh").append("&nbsp;" + scoreHigh);
+$("#scoreHigh").append(scoreHigh);
 
 // Load up next choices (LOOP back) OR
 // go on to "end" state, passing final data in tree branch terminus
-
-// Display end state
 // Use cookies to record score, sentences, history, etc???
-
-// ? History / high scores? / Achievements?
-// records of sentences/scores that are
-// youngest
-// oldest
-// oldest video
-// oldest social
-// oldest book
-// longest
-// shortest
-// going blue: has profanity or sex
-// mentions God, Lord, or Jesus
 
 // Offer word choices
 function offerChoices(objWordChoices){
