@@ -146,11 +146,15 @@ function endState(objFinal){
   // Calculate score
   var scores =
     calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength,objFinal.sentence,domain);
+  // Score multiplier
+  for(let i=0; i<scores.length; i++){
+    scores[i] = 10*scores[i];
+  }
   // Update score history & achievements -- do this with for loop & array?
   // Update overall score
   if (scores[0] > scoreHigh){
     $("#scoreHigh").empty();
-    scoreHigh = sOverall;
+    scoreHigh = scores[0];
     $("#scoreHigh").append(scoreHigh);
   }
   // Display achievements (to be cleared when restarting)
