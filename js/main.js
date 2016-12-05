@@ -169,6 +169,28 @@ function endState(objFinal){
   $(".achievements").append("<div class='achievement' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
   // display witty comment on score? graphic?
   // Save data for achievements
+    // Highest score for book
+    // Highest score for news
+    // Highest score for video
+    // Highest score for social media and forums
+    // Highest score while going blue
+    // Highest score mentioning religion
+    // Highest score for .com site
+    // Highest score for .edu site
+    // Highest score for .mil site
+    // Highest score for .org site
+    // Highest score for .gov site
+    // Highest score for .net site
+    // Longest sentence
+    // Longest sentence from a book
+    // Shortest sentence
+    // Shortest sentence from a book
+    // oldest year
+    // newest year
+    // most popular / most number of webhits
+    // most unique / least number of webhits
+    // Longest URL
+    // Shortest URL
   // Thanks for playing
   // display a SHARE button (Twitter, Facebook, Email)
   // emphasize the START OVER button
