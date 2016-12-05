@@ -184,6 +184,7 @@ function calculateScore(numWords, numHits, year, urlType, extension, urlLength, 
   surlDomain = calculateScoreDomain(extension);
   [surlComplexity, surlSimplicity] = calculateScoreURL(urlLength);
   sGoingBlue = calculateScoreGoingBlue(sentence,domain);
+  sReligious = calculateScoreReligious(sentence,domain);
   sOverall = sLength + sBrevity + sPopularity + sUniqueness +
     sHistory + sNewness + sMedia + surlDomain + surlComplexity + surlSimplicity +
     sGoingBlue + sReligious;
@@ -192,21 +193,38 @@ function calculateScore(numWords, numHits, year, urlType, extension, urlLength, 
     sGoingBlue, sReligious];
 }
 
-// Calculate score based on if sentence or URL goes blue
-function calculateScoreGoingBlue(sentence,domain){
-  var sGoingBlue = 0;
-  var wordsToCheck = ["sex", "dick", "damn", "shit", " hell ", "fuck", " ass "];
+// Calculate score absed on if sentence or URL has religious word(s)
+function calculateScoreReligious(sentence,domain){
+  var sReligious = 0;
+  var wordsToCheck = ["bible", "church", "temple", "islam", "christian", "mosque", "jesus", "god", "lord", "christ", "catholic", "evangelical", "jew", "judaism"];
   for(let i=0; i<wordsToCheck.length; i++){
     if (sentence.toLowerCase().indexOf(wordsToCheck[i]) != -1){
       // match found; stop searching
-      sGoingBlue = 50;
+      sReligious = 97;
       break;
     }
-  }
-  for(let i=0; i<wordsToCheck.length; i++){
     if (domain.toLowerCase().indexOf(wordsToCheck[i]) != -1){
       // match found; stop searching
-      sGoingBlue = sGoingBlue + 50;
+      break;
+      sReligious = 95;
+    }
+  }
+  return sReligious;
+}
+
+// Calculate score based on if sentence or URL goes blue
+function calculateScoreGoingBlue(sentence,domain){
+  var sGoingBlue = 0;
+  var wordsToCheck = ["sex", "dick", "damn", "shit", " hell ", "fuck", " ass ", "boob", "crap"];
+  for(let i=0; i<wordsToCheck.length; i++){
+    if (sentence.toLowerCase().indexOf(wordsToCheck[i]) != -1){
+      // match found; stop searching
+      sGoingBlue = 97;
+      break;
+    }
+    if (domain.toLowerCase().indexOf(wordsToCheck[i]) != -1){
+      // match found; stop searching
+      sGoingBlue = 95;
       break;
     }
   }
