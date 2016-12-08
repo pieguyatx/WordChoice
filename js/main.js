@@ -393,7 +393,7 @@ function analyzeURL(url) {
         ["facebook","social"],["forum","social"],["reddit","social"],
         ["twitter","social"],["vimeo","video"],
         ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
-        ["blogger","blog"],["news","news"],
+        ["blog","blog"],["news","news"],["goodreads","book"]
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
         ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
         ["theguardian","news"],["times.com","news"],
