@@ -393,12 +393,13 @@ function analyzeURL(url) {
         ["facebook","social"],["forum","social"],["reddit","social"],
         ["twitter","social"],["vimeo","video"],
         ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
-        ["blog","blog"],["news","news"],["goodreads","book"]
+        ["blog","blog"],["news","news"],["goodreads","book"],
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
         ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
         ["theguardian","news"],["times.com","news"],
       ];
     for(let i=0; i<urlAssignments.length; i++){
+      console.log(urlAssignments[i]);
       if (url.toLowerCase().indexOf(urlAssignments[i][0]) != -1){
         // match found; stop searching
         urlType = urlAssignments[i][1];
