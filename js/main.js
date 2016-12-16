@@ -222,7 +222,7 @@ function calculateScore(numWords, numHits, year, urlType, extension, urlLength, 
 // Calculate score absed on if sentence or URL has religious word(s)
 function calculateScoreReligious(sentence,domain){
   var sReligious = 0;
-  var wordsToCheck = ["bible", "church", "temple", "islam", "christian", "mosque", "jesus", "god", "lord", "christ", "catholic", "evangelical", "jew", "judaism"];
+  var wordsToCheck = ["bible", "church", "temple", "islam", "christian", "mosque", "jesus", "god", "lord", "christ", "catholic", "evangelical", "jew", "judaism","religion","faith","episcopal","baptist"];
   for(let i=0; i<wordsToCheck.length; i++){
     if (sentence.toLowerCase().indexOf(wordsToCheck[i]) != -1){
       // match found; stop searching
