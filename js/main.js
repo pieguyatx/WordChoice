@@ -400,7 +400,7 @@ function analyzeURL(url) {
         ["sparknotes","book"]
       ];
     for(let i=0; i<urlAssignments.length; i++){
-      console.log(urlAssignments[i]);
+      // console.log(urlAssignments[i]); // DEBUG
       if (url.toLowerCase().indexOf(urlAssignments[i][0]) != -1){
         // match found; stop searching
         urlType = urlAssignments[i][1];
