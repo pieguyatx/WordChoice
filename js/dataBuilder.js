@@ -11,6 +11,7 @@ var wordsAll = {};
 // LOOP1 (stop if s>S) S = numSentences read in from raw data
 for(var indexS=0; indexS<numSentences; indexS++){
   // Read in sentence (index s)
+  // console.log("sentence " + indexS + " " + currentSentence); // DEBUG`
   var currentSentence = rawData[indexS].sentence;
   // Split sentence into array of words according to spaces
   var currentWords = currentSentence.split(" ");
@@ -73,6 +74,7 @@ function checkIfWordPresent(wordToCheck,objSetOfWords,numWordsInSet){
   var wordFound = false;
   for(let elem=0; elem<numWordsInSet; elem++){ // search proper elem (A, B, etc)
     var existingWordProperty = String.fromCharCode(elem+65);
+    //console.log(wordToCheck); // DEBUG
     if(wordToCheck.toLowerCase()===objSetOfWords[existingWordProperty].word.toLowerCase()){
       wordFound = true;
       break;
