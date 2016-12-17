@@ -393,10 +393,11 @@ function analyzeURL(url) {
         ["facebook","social"],["forum","social"],["reddit","social"],
         ["twitter","social"],["vimeo","video"],
         ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
-        ["blog","blog"],["news","news"],["goodreads","book"],
+        ["blog","blog"],["wordpress","blog"],["news","news"],["goodreads","book"],
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
         ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
-        ["theguardian","news"],["times.com","news"],
+        ["theguardian","news"],["times.com","news"],[".bbs","social"],
+        ["sparknotes","book"]
       ];
     for(let i=0; i<urlAssignments.length; i++){
       console.log(urlAssignments[i]);
