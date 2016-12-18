@@ -17,9 +17,34 @@ $("header").on('click','.startOver',function(){
 
 // Set initial choices
 offerChoices(wordsAll);
+
 // Set initial score(s)
 var scoreHigh = 0;
 $("#scoreHigh").append(scoreHigh);
+var highestScores = {}; // object to store special scores
+highestScores.book = 0;
+highestScores.news = 0;
+highestScores.video = 0;
+highestScores.social = 0;
+highestScores.blog = 0;
+highestScores.blue = 0;
+highestScores.religious = 0;
+highestScores.com = 0;
+highestScores.edu = 0;
+highestScores.mil = 0;
+highestScores.org = 0;
+highestScores.gov = 0;
+highestScores.net = 0;
+highestScores.longest = 0;
+highestScores.longestBook = 0;
+highestScores.shortest = 0;
+highestScores.shortestBook = 0;
+highestScores.oldest = 0;
+highestScores.newest = 0;
+highestScores.popular = 0;
+highestScores.unique = 0;
+highestScores.longestURL = 0;
+highestScores.shortestURL = 0;
 
 // Load up next choices (LOOP back) OR
 // go on to "end" state, passing final data in tree branch terminus
@@ -168,29 +193,55 @@ function endState(objFinal){
   // Give overall score
   $(".achievements").append("<div class='achievement' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
   // display witty comment on score? graphic?
-  // Save data for achievements
+  // Save data for highest scores
     // Highest score for book
+    if((urlType==="book")&&(scores[0]>highestScores.book)){highestScores.book = scores[0];}
     // Highest score for news
+    if((urlType==="news")&&(scores[0]>highestScores.news)){highestScores.news = scores[0];}
     // Highest score for video
+    if((urlType==="video")&&(scores[0]>highestScores.video)){highestScores.video = scores[0];}
     // Highest score for social media and forums
+    if((urlType==="social")&&(scores[0]>highestScores.social)){highestScores.social = scores[0];}
+    // Highest score for blogs
+    if((urlType==="blog")&&(scores[0]>highestScores.blog)){highestScores.blog = scores[0];}
     // Highest score while going blue
+    if((scores[11]>0)&&(scores[0]>highestScores.blue)){highestScores.blue = scores[0];}
     // Highest score mentioning religion
+    if((scores[12]>0)&&(scores[0]>highestScores.religious)){highestScores.religious = scores[0];}
     // Highest score for .com site
+    if((extension===".com")&&(scores[0]>highestScores.com)){highestScores.com = scores[0];}
     // Highest score for .edu site
+    if((extension===".edu")&&(scores[0]>highestScores.edu)){highestScores.edu = scores[0];}
     // Highest score for .mil site
+    if((extension===".mil")&&(scores[0]>highestScores.mil)){highestScores.mil = scores[0];}
     // Highest score for .org site
+    if((extension===".org")&&(scores[0]>highestScores.org)){highestScores.org = scores[0];}
     // Highest score for .gov site
+    if((extension===".gov")&&(scores[0]>highestScores.gov)){highestScores.gov = scores[0];}
     // Highest score for .net site
+    if((extension===".net")&&(scores[0]>highestScores.net)){highestScores.net = scores[0];}
     // Longest sentence
+    if(objFinal.numWords>highestScores.longest){highestScores.longest = objFinal.numWords;}
     // Longest sentence from a book
+    if((urlType==="book")&&(objFinal.numWords>highestScores.longestBook)){highestScores.longestBook = objFinal.numWords;}
     // Shortest sentence
+    if((objFinal.numWords<highestScores.shortest)||(highestScores.shortest===0)){highestScores.shortest = objFinal.numWords;}
     // Shortest sentence from a book
+    if((urlType==="book")&&((objFinal.numWords<highestScores.shortestBook)||(highestScores.shortestBook===0))){highestScores.shortestBook = objFinal.numWords;}
     // oldest year
+    if((objFinal.yearRecorded<highestScores.oldest)||(highestScores.oldest===0)){highestScores.oldest = objFinal.yearRecorded;}
     // newest year
+    if((objFinal.yearRecorded>highestScores.newest)||(highestScores.newest===0)){highestScores.newest = objFinal.yearRecorded;}
     // most popular / most number of webhits
+    if(objFinal.numHits>highestScores.popular){highestScores.popular = objFinal.numHits;}
     // most unique / least number of webhits
+    if((objFinal.numHits<highestScores.unique)||(highestScores.unique===0)){highestScores.unique = objFinal.numHits;}
     // Longest URL
+    if(urlLength>highestScores.longestURL){highestScores.longestURL = urlLength;}
     // Shortest URL
+    if((urlLength<highestScores.shortestURL)||(highestScores.shortestURL===0)){highestScores.shortestURL = urlLength;}
+  // Display high-score data (if it exists)
+  console.log(highestScores); // DEBUG
   // Thanks for playing
   // display a SHARE button (Twitter, Facebook, Email)
   // emphasize the START OVER button
@@ -296,6 +347,7 @@ function calculateScoreMedia(urlType){
   else if(urlType==="video"){sMedia=90;}
   else if(urlType==="social"){sMedia=87;}
   else if(urlType==="news"){sMedia=94;}
+  else if(urlType==="blog"){sMedia=95;}
   return sMedia;
 }
 
