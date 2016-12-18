@@ -122,7 +122,7 @@ function populateWordTree(workingLayer,workingWords){
       workingLayer[propertyName]["numWords"] = numWords;
       workingLayer[propertyName].numHits = rawData[indexS].numHits;
       workingLayer[propertyName].link = rawData[indexS].link;
-      workingLayer[propertyName].recordYear = rawData[indexS].recordYear;
+      workingLayer[propertyName].yearRecorded = rawData[indexS].yearRecorded;
       workingLayer[propertyName].accessYear = rawData[indexS].accessYear;
       workingLayer[propertyName].accessMonth = rawData[indexS].accessMonth;
       workingLayer[propertyName].sentence = rawData[indexS].sentence;

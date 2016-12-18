@@ -145,7 +145,7 @@ function endState(objFinal){
   $(".messageDisplay").append("<a href='"+objFinal.link+"' target='_blank'>"+domain+"</a>");
   // Calculate score
   var scores =
-    calculateScore(objFinal.order,objFinal.numHits,objFinal.recordYear,urlType,extension,urlLength,objFinal.sentence,domain);
+    calculateScore(objFinal.order,objFinal.numHits,objFinal.yearRecorded,urlType,extension,urlLength,objFinal.sentence,domain);
   // Score multiplier
   for(let i=0; i<scores.length; i++){
     scores[i] = 10*scores[i];
