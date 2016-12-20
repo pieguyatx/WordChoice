@@ -233,6 +233,9 @@ function endState(objFinal){
     if(highestScores.net===0&&((extension===".net")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest score for a .net site:</div><div class='score' id='scoreNet'></div></div>");
     }
+    if(highestScores.longest===0&&objFinal.numWords>0){
+      $(".scores").append("<div><div>Longest sentence:</div><div class='score' id='scoreLongest'></div></div>");
+    }
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -313,7 +316,11 @@ function endState(objFinal){
       $("#scoreNet").append(highestScores.net);
     }
     // Longest sentence
-    if(objFinal.numWords>highestScores.longest){highestScores.longest = objFinal.numWords;}
+    if(objFinal.numWords>highestScores.longest){
+      highestScores.longest = objFinal.numWords;
+      $("#scoreLongest").empty();
+      $("#scoreLongest").append(highestScores.longest + " words");
+    }
     // Longest sentence from a book
     if((urlType==="book")&&(objFinal.numWords>highestScores.longestBook)){highestScores.longestBook = objFinal.numWords;}
     // Shortest sentence
