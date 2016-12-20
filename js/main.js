@@ -218,7 +218,21 @@ function endState(objFinal){
     if(highestScores.com===0&&((extension===".com")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest score for a .com site:</div><div class='score' id='scoreCom'></div></div>");
     }
-
+    if(highestScores.edu===0&&((extension===".edu")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score for a .edu site:</div><div class='score' id='scoreEdu'></div></div>");
+    }
+    if(highestScores.mil===0&&((extension===".mil")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score for a .mil site:</div><div class='score' id='scoreMil'></div></div>");
+    }
+    if(highestScores.org===0&&((extension===".org")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score for a .org site:</div><div class='score' id='scoreOrg'></div></div>");
+    }
+    if(highestScores.gov===0&&((extension===".gov")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score for a .gov site:</div><div class='score' id='scoreGov'></div></div>");
+    }
+    if(highestScores.net===0&&((extension===".net")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score for a .net site:</div><div class='score' id='scoreNet'></div></div>");
+    }
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -269,15 +283,35 @@ function endState(objFinal){
       $("#scoreCom").append(highestScores.com);
     }
     // Highest score for .edu site
-    if((extension===".edu")&&(scores[0]>highestScores.edu)){highestScores.edu = scores[0];}
+    if((extension===".edu")&&(scores[0]>highestScores.edu)){
+      highestScores.edu = scores[0];
+      $("#scoreEdu").empty();
+      $("#scoreEdu").append(highestScores.edu);
+    }
     // Highest score for .mil site
-    if((extension===".mil")&&(scores[0]>highestScores.mil)){highestScores.mil = scores[0];}
+    if((extension===".mil")&&(scores[0]>highestScores.mil)){
+      highestScores.mil = scores[0];
+      $("#scoreMil").empty();
+      $("#scoreMil").append(highestScores.mil);
+    }
     // Highest score for .org site
-    if((extension===".org")&&(scores[0]>highestScores.org)){highestScores.org = scores[0];}
+    if((extension===".org")&&(scores[0]>highestScores.org)){
+      highestScores.org = scores[0];
+      $("#scoreOrg").empty();
+      $("#scoreOrg").append(highestScores.org);
+    }
     // Highest score for .gov site
-    if((extension===".gov")&&(scores[0]>highestScores.gov)){highestScores.gov = scores[0];}
+    if((extension===".gov")&&(scores[0]>highestScores.gov)){
+      highestScores.gov = scores[0];
+      $("#scoreGov").empty();
+      $("#scoreGov").append(highestScores.gov);
+    }
     // Highest score for .net site
-    if((extension===".net")&&(scores[0]>highestScores.net)){highestScores.net = scores[0];}
+    if((extension===".net")&&(scores[0]>highestScores.net)){
+      highestScores.net = scores[0];
+      $("#scoreNet").empty();
+      $("#scoreNet").append(highestScores.net);
+    }
     // Longest sentence
     if(objFinal.numWords>highestScores.longest){highestScores.longest = objFinal.numWords;}
     // Longest sentence from a book
