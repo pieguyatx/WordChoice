@@ -257,6 +257,12 @@ function endState(objFinal){
     if(highestScores.unique===0){
       $(".scores").append("<div><div>Most Unique Sentence:</div><div class='score' id='scoreUnique'></div></div>");
     }
+    if(highestScores.longestURL===0){
+      $(".scores").append("<div><div>Longest URL:</div><div class='score' id='scoreLongestURL'></div></div>");
+    }
+    if(highestScores.shortestURL===0){
+      $(".scores").append("<div><div>Shortest URL:</div><div class='score' id='scoreShortestURL'></div></div>");
+    }
 
   // Save data for highest scores
     // Highest score for book
@@ -388,9 +394,17 @@ function endState(objFinal){
       $("#scoreUnique").append(objFinal.sentence + " ("+objFinal.numHits.toLocaleString()+" websearch "+hits+" in "+objFinal.accessYear+")");
     }
     // Longest URL
-    if(urlLength>highestScores.longestURL){highestScores.longestURL = urlLength;}
+    if(urlLength>highestScores.longestURL){
+      highestScores.longestURL = urlLength;
+      $("#scoreLongestURL").empty();
+      $("#scoreLongestURL").append(urlLength.toLocaleString()+" characters");
+    }
     // Shortest URL
-    if((urlLength<highestScores.shortestURL)||(highestScores.shortestURL===0)){highestScores.shortestURL = urlLength;}
+    if((urlLength<highestScores.shortestURL)||(highestScores.shortestURL===0)){
+      highestScores.shortestURL = urlLength;
+      $("#scoreShortestURL").empty();
+      $("#scoreShortestURL").append(urlLength.toLocaleString()+" characters");
+    }
   // Display high-score data (if it exists)
   console.log(highestScores); // DEBUG
 
