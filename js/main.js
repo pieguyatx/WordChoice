@@ -195,7 +195,7 @@ function endState(objFinal){
   // display witty comment on score? graphic?
   // Display score heading if record pops up for the first time
     if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a book:</div><div class='score' id='scoreBook'></div></div>");
+      $(".scores").append("<div><div>Highest score from a book or book site:</div><div class='score' id='scoreBook'></div></div>");
     }
     if(highestScores.news===0&&((urlType==="news")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest score from a news site:</div><div class='score' id='scoreNews'></div></div>");
@@ -235,6 +235,9 @@ function endState(objFinal){
     }
     if(highestScores.longest===0&&objFinal.numWords>0){
       $(".scores").append("<div><div>Longest sentence:</div><div class='score' id='scoreLongest'></div></div>");
+    }
+    if(highestScores.longestBook===0&&((urlType==="book")&&(objFinal.numWords>0))){
+      $(".scores").append("<div><div>Longest sentence from a book or book site:</div><div class='score' id='scoreLongestBook'></div></div>");
     }
   // Save data for highest scores
     // Highest score for book
@@ -322,7 +325,11 @@ function endState(objFinal){
       $("#scoreLongest").append(highestScores.longest + " words");
     }
     // Longest sentence from a book
-    if((urlType==="book")&&(objFinal.numWords>highestScores.longestBook)){highestScores.longestBook = objFinal.numWords;}
+    if((urlType==="book")&&(objFinal.numWords>highestScores.longestBook)){
+      highestScores.longestBook = objFinal.numWords;
+      $("#scoreLongestBook").empty();
+      $("#scoreLongestBook").append(highestScores.longestBook + " words");
+    }
     // Shortest sentence
     if((objFinal.numWords<highestScores.shortest)||(highestScores.shortest===0)){highestScores.shortest = objFinal.numWords;}
     // Shortest sentence from a book
