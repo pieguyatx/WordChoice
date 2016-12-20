@@ -248,6 +248,10 @@ function endState(objFinal){
     if(highestScores.oldest===0){
       $(".scores").append("<div><div>Oldest Sentence Published:</div><div class='score' id='scoreOldest'></div></div>");
     }
+    if(highestScores.newest===0){
+      $(".scores").append("<div><div>Newest Sentence Published:</div><div class='score' id='scoreNewest'></div></div>");
+    }
+
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -358,7 +362,11 @@ function endState(objFinal){
       $("#scoreOldest").append("Year " + highestScores.oldest);
     }
     // newest year
-    if((objFinal.yearRecorded>highestScores.newest)||(highestScores.newest===0)){highestScores.newest = objFinal.yearRecorded;}
+    if((objFinal.yearRecorded>highestScores.newest)||(highestScores.newest===0)){
+      highestScores.newest = objFinal.yearRecorded;
+      $("#scoreNewest").empty();
+      $("#scoreNewest").append("Year " + highestScores.newest);
+    }
     // most popular / most number of webhits
     if(objFinal.numHits>highestScores.popular){highestScores.popular = objFinal.numHits;}
     // most unique / least number of webhits
