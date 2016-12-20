@@ -175,7 +175,6 @@ function endState(objFinal){
   for(let i=0; i<scores.length; i++){
     scores[i] = 10*scores[i];
   }
-  // Update score history & achievements -- do this with for loop & array?
   // Update overall score
   if (scores[0] > scoreHigh){
     $("#scoreHigh").empty();
@@ -195,12 +194,20 @@ function endState(objFinal){
   // display witty comment on score? graphic?
   // Display score heading if record pops up for the first time
     if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a line in a book:</div><div class='score' id='scoreBook'></div></div>");
+      $(".scores").append("<div><div>Highest score from a book:</div><div class='score' id='scoreBook'></div></div>");
     }
     if(highestScores.news===0&&((urlType==="news")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest score from a news site:</div><div class='score' id='scoreNews'></div></div>");
     }
-
+    if(highestScores.video===0&&((urlType==="video")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score from a video site:</div><div class='score' id='scoreVideo'></div></div>");
+    }
+    if(highestScores.social===0&&((urlType==="social")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score from a social media site:</div><div class='score' id='scoreSocial'></div></div>");
+    }
+    if(highestScores.blog===0&&((urlType==="blog")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score from a blog site:</div><div class='score' id='scoreBlog'></div></div>");
+    }
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -215,11 +222,23 @@ function endState(objFinal){
       $("#scoreNews").append(highestScores.news);
     }
     // Highest score for video
-    if((urlType==="video")&&(scores[0]>highestScores.video)){highestScores.video = scores[0];}
+    if((urlType==="video")&&(scores[0]>highestScores.video)){
+      highestScores.video = scores[0];
+      $("#scoreVideo").empty();
+      $("#scoreVideo").append(highestScores.video);
+    }
     // Highest score for social media and forums
-    if((urlType==="social")&&(scores[0]>highestScores.social)){highestScores.social = scores[0];}
+    if((urlType==="social")&&(scores[0]>highestScores.social)){
+      highestScores.social = scores[0];
+      $("#scoreSocial").empty();
+      $("#scoreSocial").append(highestScores.social);
+    }
     // Highest score for blogs
-    if((urlType==="blog")&&(scores[0]>highestScores.blog)){highestScores.blog = scores[0];}
+    if((urlType==="blog")&&(scores[0]>highestScores.blog)){
+      highestScores.blog = scores[0];
+      $("#scoreBlog").empty();
+      $("#scoreBlog").append(highestScores.blog);
+    }
     // Highest score while going blue
     if((scores[11]>0)&&(scores[0]>highestScores.blue)){highestScores.blue = scores[0];}
     // Highest score mentioning religion
