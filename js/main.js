@@ -225,7 +225,7 @@ function endState(objFinal){
       $(".scores").append("<div><div>Highest Score for a .mil Site:</div><div class='score' id='scoreMil'></div></div>");
     }
     if(highestScores.org===0&&((extension===".org")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest Score for a .org site:</div><div class='score' id='scoreOrg'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .org Site:</div><div class='score' id='scoreOrg'></div></div>");
     }
     if(highestScores.gov===0&&((extension===".gov")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest Score for a .gov Site:</div><div class='score' id='scoreGov'></div></div>");
@@ -252,8 +252,12 @@ function endState(objFinal){
       $(".scores").append("<div><div>Newest Sentence Published:</div><div class='score' id='scoreNewest'></div></div>");
     }
     if(highestScores.popular===0&&objFinal.numHits>1){
-      $(".scores").append("<div><div>Sentence with Most Websearch Hits:</div><div class='score' id='scorePopular'></div></div>");
+      $(".scores").append("<div><div>Most Popular Sentence:</div><div class='score' id='scorePopular'></div></div>");
     }
+    if(highestScores.unique===0){
+      $(".scores").append("<div><div>Most Unique Sentence:</div><div class='score' id='scoreUnique'></div></div>");
+    }
+
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -373,10 +377,16 @@ function endState(objFinal){
     if(objFinal.numHits>highestScores.popular){
       highestScores.popular = objFinal.numHits;
       $("#scorePopular").empty();
-      $("#scorePopular").append(objFinal.sentence);
+      $("#scorePopular").append(objFinal.sentence + " ("+objFinal.numHits.toLocaleString()+" websearch hits in "+objFinal.accessYear+")");
     }
     // most unique / least number of webhits
-    if((objFinal.numHits<highestScores.unique)||(highestScores.unique===0)){highestScores.unique = objFinal.numHits;}
+    if((objFinal.numHits<highestScores.unique)||(highestScores.unique===0)){
+      highestScores.unique = objFinal.numHits;
+      var hits = "hits";
+      if (objFinal.numHits===1){hits="hit";}
+      $("#scoreUnique").empty();
+      $("#scoreUnique").append(objFinal.sentence + " ("+objFinal.numHits.toLocaleString()+" websearch "+hits+" in "+objFinal.accessYear+")");
+    }
     // Longest URL
     if(urlLength>highestScores.longestURL){highestScores.longestURL = urlLength;}
     // Shortest URL
