@@ -251,7 +251,9 @@ function endState(objFinal){
     if(highestScores.newest===0){
       $(".scores").append("<div><div>Newest Sentence Published:</div><div class='score' id='scoreNewest'></div></div>");
     }
-
+    if(highestScores.popular===0&&objFinal.numHits>1){
+      $(".scores").append("<div><div>Sentence with Most Websearch Hits:</div><div class='score' id='scorePopular'></div></div>");
+    }
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -368,7 +370,11 @@ function endState(objFinal){
       $("#scoreNewest").append("Year " + highestScores.newest);
     }
     // most popular / most number of webhits
-    if(objFinal.numHits>highestScores.popular){highestScores.popular = objFinal.numHits;}
+    if(objFinal.numHits>highestScores.popular){
+      highestScores.popular = objFinal.numHits;
+      $("#scorePopular").empty();
+      $("#scorePopular").append(objFinal.sentence);
+    }
     // most unique / least number of webhits
     if((objFinal.numHits<highestScores.unique)||(highestScores.unique===0)){highestScores.unique = objFinal.numHits;}
     // Longest URL
