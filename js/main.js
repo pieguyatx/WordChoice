@@ -215,6 +215,10 @@ function endState(objFinal){
     if(highestScores.religious===0&&((scores[12]>0)&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest score for something religious:</div><div class='score' id='scoreReligious'></div></div>");
     }
+    if(highestScores.com===0&&((extension===".com")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score for a .com site:</div><div class='score' id='scoreCom'></div></div>");
+    }
+
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -259,7 +263,11 @@ function endState(objFinal){
       $("#scoreReligious").append(highestScores.religious);
     }
     // Highest score for .com site
-    if((extension===".com")&&(scores[0]>highestScores.com)){highestScores.com = scores[0];}
+    if((extension===".com")&&(scores[0]>highestScores.com)){
+      highestScores.com = scores[0];
+      $("#scoreCom").empty();
+      $("#scoreCom").append(highestScores.com);
+    }
     // Highest score for .edu site
     if((extension===".edu")&&(scores[0]>highestScores.edu)){highestScores.edu = scores[0];}
     // Highest score for .mil site
