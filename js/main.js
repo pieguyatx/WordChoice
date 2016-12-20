@@ -12,7 +12,7 @@ $("header").on('click','.startOver',function(){
   $(".mainWindow").empty();
   offerChoices(wordsAll);
   $(".achievements").empty();
-  $(".achievements").append("ACHIEVEMENTS");
+  $(".achievements").append("ACHIEVEMENTS:");
 });
 
 // Set initial choices
@@ -239,6 +239,9 @@ function endState(objFinal){
     if(highestScores.longestBook===0&&((urlType==="book")&&(objFinal.numWords>0))){
       $(".scores").append("<div><div>Longest Sentence from a Book or Book Site:</div><div class='score' id='scoreLongestBook'></div></div>");
     }
+    if(highestScores.shortest===0){
+      $(".scores").append("<div><div>Shortest Sentence:</div><div class='score' id='scoreShortest'></div></div>");
+    }
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
@@ -331,7 +334,11 @@ function endState(objFinal){
       $("#scoreLongestBook").append(highestScores.longestBook + " words");
     }
     // Shortest sentence
-    if((objFinal.numWords<highestScores.shortest)||(highestScores.shortest===0)){highestScores.shortest = objFinal.numWords;}
+    if((objFinal.numWords<highestScores.shortest)||(highestScores.shortest===0)){
+      highestScores.shortest = objFinal.numWords;
+      $("#scoreShortest").empty();
+      $("#scoreShortest").append(highestScores.shortest + " words");
+    }
     // Shortest sentence from a book
     if((urlType==="book")&&((objFinal.numWords<highestScores.shortestBook)||(highestScores.shortestBook===0))){highestScores.shortestBook = objFinal.numWords;}
     // oldest year
