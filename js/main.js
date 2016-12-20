@@ -233,7 +233,7 @@ function endState(objFinal){
     if(highestScores.net===0&&((extension===".net")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest Score for a .net Site:</div><div class='score' id='scoreNet'></div></div>");
     }
-    if(highestScores.longest===0&&objFinal.numWords>0){
+    if(highestScores.longest===0){
       $(".scores").append("<div><div>Longest Sentence:</div><div class='score' id='scoreLongest'></div></div>");
     }
     if(highestScores.longestBook===0&&((urlType==="book")&&(objFinal.numWords>0))){
@@ -244,6 +244,9 @@ function endState(objFinal){
     }
     if(highestScores.shortestBook===0&&urlType==="book"){
       $(".scores").append("<div><div>Shortest Sentence from a Book or Book Site:</div><div class='score' id='scoreShortestBook'></div></div>");
+    }
+    if(highestScores.oldest===0){
+      $(".scores").append("<div><div>Oldest Sentence Published:</div><div class='score' id='scoreOldest'></div></div>");
     }
   // Save data for highest scores
     // Highest score for book
@@ -349,7 +352,11 @@ function endState(objFinal){
       $("#scoreShortestBook").append(highestScores.shortestBook + " words");
     }
     // oldest year
-    if((objFinal.yearRecorded<highestScores.oldest)||(highestScores.oldest===0)){highestScores.oldest = objFinal.yearRecorded;}
+    if((objFinal.yearRecorded<highestScores.oldest)||(highestScores.oldest===0)){
+      highestScores.oldest = objFinal.yearRecorded;
+      $("#scoreOldest").empty();
+      $("#scoreOldest").append("Year " + highestScores.oldest);
+    }
     // newest year
     if((objFinal.yearRecorded>highestScores.newest)||(highestScores.newest===0)){highestScores.newest = objFinal.yearRecorded;}
     // most popular / most number of webhits
