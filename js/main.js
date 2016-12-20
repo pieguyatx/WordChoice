@@ -198,7 +198,7 @@ function endState(objFinal){
       $(".scores").append("<div><div>Highest Score from a Book or Book Site:</div><div class='score' id='scoreBook'></div></div>");
     }
     if(highestScores.news===0&&((urlType==="news")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest Score from a News Site:</div><div class='score' id='scoreNews'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a News Site:</div><div class='score' id='scoreNews'></div></div>");
     }
     if(highestScores.video===0&&((urlType==="video")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest Score for a Video Site:</div><div class='score' id='scoreVideo'></div></div>");
@@ -241,6 +241,9 @@ function endState(objFinal){
     }
     if(highestScores.shortest===0){
       $(".scores").append("<div><div>Shortest Sentence:</div><div class='score' id='scoreShortest'></div></div>");
+    }
+    if(highestScores.shortestBook===0&&urlType==="book"){
+      $(".scores").append("<div><div>Shortest Sentence from a Book or Book Site:</div><div class='score' id='scoreShortestBook'></div></div>");
     }
   // Save data for highest scores
     // Highest score for book
@@ -340,7 +343,11 @@ function endState(objFinal){
       $("#scoreShortest").append(highestScores.shortest + " words");
     }
     // Shortest sentence from a book
-    if((urlType==="book")&&((objFinal.numWords<highestScores.shortestBook)||(highestScores.shortestBook===0))){highestScores.shortestBook = objFinal.numWords;}
+    if((urlType==="book")&&((objFinal.numWords<highestScores.shortestBook)||(highestScores.shortestBook===0))){
+      highestScores.shortestBook = objFinal.numWords;
+      $("#scoreShortestBook").empty();
+      $("#scoreShortestBook").append(highestScores.shortestBook + " words");
+    }
     // oldest year
     if((objFinal.yearRecorded<highestScores.oldest)||(highestScores.oldest===0)){highestScores.oldest = objFinal.yearRecorded;}
     // newest year
@@ -555,7 +562,7 @@ function analyzeURL(url) {
     var urlType = "other"; // default type
     // scan for keywords in the URL to make a best guess
     var urlAssignments = [  // hierarchical; earlier overrides later
-        ["youtube","video"],["books.google","book"],
+        ["youtube","video"],["books.","book"],
         ["facebook","social"],["forum","social"],["reddit","social"],
         ["twitter","social"],["vimeo","video"],
         ["pinterest","social"],["quora","social"],["answers.yahoo","social"],
