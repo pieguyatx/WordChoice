@@ -197,14 +197,23 @@ function endState(objFinal){
     if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest score from a line in a book:</div><div class='score' id='scoreBook'></div></div>");
     }
+    if(highestScores.news===0&&((urlType==="news")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score from a news site:</div><div class='score' id='scoreNews'></div></div>");
+    }
+
   // Save data for highest scores
     // Highest score for book
     if((urlType==="book")&&(scores[0]>highestScores.book)){
       highestScores.book = scores[0];
+      $("#scoreBook").empty();
       $("#scoreBook").append(highestScores.book);
     }
     // Highest score for news
-    if((urlType==="news")&&(scores[0]>highestScores.news)){highestScores.news = scores[0];}
+    if((urlType==="news")&&(scores[0]>highestScores.news)){
+      highestScores.news = scores[0];
+      $("#scoreNews").empty();
+      $("#scoreNews").append(highestScores.news);
+    }
     // Highest score for video
     if((urlType==="video")&&(scores[0]>highestScores.video)){highestScores.video = scores[0];}
     // Highest score for social media and forums
