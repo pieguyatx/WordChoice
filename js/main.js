@@ -159,6 +159,7 @@ function endState(objFinal){
   $(".messageDisplay").empty();
   $(".mainWindow").empty();
   // show final sentence
+  objFinal.sentence = objFinal.sentence.replace("_"," ");
   $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
   // Analyze URL qualities
   var outputAnalyzeURL = analyzeURL(objFinal.link);
