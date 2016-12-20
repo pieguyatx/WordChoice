@@ -96,8 +96,15 @@ main {
 }
 .scores{
   font-size: 0.8em;
-  display: flex;
+  display: block;
   padding-left: 1em;
+}
+.scores > div{
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* Safari */
+  display: flex;
 }
 .score{
   padding-left: .5em;

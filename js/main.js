@@ -193,9 +193,16 @@ function endState(objFinal){
   // Give overall score
   $(".achievements").append("<div class='achievement' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
   // display witty comment on score? graphic?
+  // Display score heading if record pops up for the first time
+    if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
+      $(".scores").append("<div><div>Highest score from a line in a book:</div><div class='score' id='scoreBook'></div></div>");
+    }
   // Save data for highest scores
     // Highest score for book
-    if((urlType==="book")&&(scores[0]>highestScores.book)){highestScores.book = scores[0];}
+    if((urlType==="book")&&(scores[0]>highestScores.book)){
+      highestScores.book = scores[0];
+      $("#scoreBook").append(highestScores.book);
+    }
     // Highest score for news
     if((urlType==="news")&&(scores[0]>highestScores.news)){highestScores.news = scores[0];}
     // Highest score for video
@@ -242,6 +249,7 @@ function endState(objFinal){
     if((urlLength<highestScores.shortestURL)||(highestScores.shortestURL===0)){highestScores.shortestURL = urlLength;}
   // Display high-score data (if it exists)
   console.log(highestScores); // DEBUG
+
   // Thanks for playing
   // display a SHARE button (Twitter, Facebook, Email)
   // emphasize the START OVER button
@@ -449,7 +457,7 @@ function analyzeURL(url) {
         ["huffingtonpost","news"],["baltimoresun","news"],["theatlantic","news"],
         ["biblehub","book"],["bloomberg","news"],["amazon.com","book"],
         ["theguardian","news"],["times.com","news"],[".bbs","social"],
-        ["sparknotes","book"]
+        ["sparknotes","book"],["goodreads","book"]
       ];
     for(let i=0; i<urlAssignments.length; i++){
       // console.log(urlAssignments[i]); // DEBUG
