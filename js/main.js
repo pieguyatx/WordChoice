@@ -195,49 +195,49 @@ function endState(objFinal){
   // display witty comment on score? graphic?
   // Display score heading if record pops up for the first time
     if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a book or book site:</div><div class='score' id='scoreBook'></div></div>");
+      $(".scores").append("<div><div>Highest Score from a Book or Book Site:</div><div class='score' id='scoreBook'></div></div>");
     }
     if(highestScores.news===0&&((urlType==="news")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a news site:</div><div class='score' id='scoreNews'></div></div>");
+      $(".scores").append("<div><div>Highest Score from a News Site:</div><div class='score' id='scoreNews'></div></div>");
     }
     if(highestScores.video===0&&((urlType==="video")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a video site:</div><div class='score' id='scoreVideo'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a Video Site:</div><div class='score' id='scoreVideo'></div></div>");
     }
     if(highestScores.social===0&&((urlType==="social")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a social media site:</div><div class='score' id='scoreSocial'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a Social Media Site:</div><div class='score' id='scoreSocial'></div></div>");
     }
     if(highestScores.blog===0&&((urlType==="blog")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score from a blog:</div><div class='score' id='scoreBlog'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a Blog:</div><div class='score' id='scoreBlog'></div></div>");
     }
     if(highestScores.blue===0&&((scores[11]>0)&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score going blue:</div><div class='score' id='scoreBlue'></div></div>");
+      $(".scores").append("<div><div>Highest Score Going Blue:</div><div class='score' id='scoreBlue'></div></div>");
     }
     if(highestScores.religious===0&&((scores[12]>0)&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for something religious:</div><div class='score' id='scoreReligious'></div></div>");
+      $(".scores").append("<div><div>Highest Score for Something Religious:</div><div class='score' id='scoreReligious'></div></div>");
     }
     if(highestScores.com===0&&((extension===".com")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for a .com site:</div><div class='score' id='scoreCom'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .com Site:</div><div class='score' id='scoreCom'></div></div>");
     }
     if(highestScores.edu===0&&((extension===".edu")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for a .edu site:</div><div class='score' id='scoreEdu'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .edu Site:</div><div class='score' id='scoreEdu'></div></div>");
     }
     if(highestScores.mil===0&&((extension===".mil")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for a .mil site:</div><div class='score' id='scoreMil'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .mil Site:</div><div class='score' id='scoreMil'></div></div>");
     }
     if(highestScores.org===0&&((extension===".org")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for a .org site:</div><div class='score' id='scoreOrg'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .org site:</div><div class='score' id='scoreOrg'></div></div>");
     }
     if(highestScores.gov===0&&((extension===".gov")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for a .gov site:</div><div class='score' id='scoreGov'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .gov Site:</div><div class='score' id='scoreGov'></div></div>");
     }
     if(highestScores.net===0&&((extension===".net")&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest score for a .net site:</div><div class='score' id='scoreNet'></div></div>");
+      $(".scores").append("<div><div>Highest Score for a .net Site:</div><div class='score' id='scoreNet'></div></div>");
     }
     if(highestScores.longest===0&&objFinal.numWords>0){
-      $(".scores").append("<div><div>Longest sentence:</div><div class='score' id='scoreLongest'></div></div>");
+      $(".scores").append("<div><div>Longest Sentence:</div><div class='score' id='scoreLongest'></div></div>");
     }
     if(highestScores.longestBook===0&&((urlType==="book")&&(objFinal.numWords>0))){
-      $(".scores").append("<div><div>Longest sentence from a book or book site:</div><div class='score' id='scoreLongestBook'></div></div>");
+      $(".scores").append("<div><div>Longest Sentence from a Book or Book Site:</div><div class='score' id='scoreLongestBook'></div></div>");
     }
   // Save data for highest scores
     // Highest score for book
