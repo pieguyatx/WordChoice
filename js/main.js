@@ -161,6 +161,10 @@ function endState(objFinal){
   // show final sentence
   objFinal.sentence = objFinal.sentence.replace("_"," ");
   $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
+  // display a SHARE button (Twitter, Facebook, Email)
+  $(".mainWindow").append(
+    "<div class='shareButtons'><a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence+"&quot;'' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></div>"
+  );
   // Analyze URL qualities
   var outputAnalyzeURL = analyzeURL(objFinal.link);
   var domain = outputAnalyzeURL[0];
@@ -406,10 +410,9 @@ function endState(objFinal){
       $("#scoreShortestURL").append(urlLength.toLocaleString()+" characters");
     }
   // Display high-score data (if it exists)
-  console.log(highestScores); // DEBUG
+  // console.log(highestScores); // DEBUG
 
   // Thanks for playing
-  // display a SHARE button (Twitter, Facebook, Email)
   // emphasize the START OVER button
 }
 
