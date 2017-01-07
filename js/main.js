@@ -172,7 +172,7 @@ function endState(objFinal){
   var extension = outputAnalyzeURL[2];
   var urlLength = outputAnalyzeURL[3];
   // display link to internet
-  $(".messageDisplay").append("<a href='"+objFinal.link+"' target='_blank'>"+domain+"</a>");
+  $(".messageDisplay").append("Source: <a href='"+objFinal.link+"' target='_blank'>"+domain+"</a>");
   // Calculate score
   var scores =
     calculateScore(objFinal.order,objFinal.numHits,objFinal.yearRecorded,urlType,extension,urlLength,objFinal.sentence,domain);
