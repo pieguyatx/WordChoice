@@ -5,8 +5,8 @@
 }
 .debugOutput {
   color: red;
-}
-*/
+} */
+
 * {
   -webkit-box-sizing: border-box;
   -mox-box-sizing: border-box;
@@ -20,7 +20,7 @@ body {
   font-family: 'Copse', serif;
   font-size: 1.5em;
 }
-/* Wood patterns from @mikehearn https://www.transparenttextures.com/ 
+/* Wood patterns from @mikehearn https://www.transparenttextures.com/
 body::after {
   content: "";
   background: url("../img/tileable-wood-colored.png");
@@ -35,10 +35,19 @@ body::after {
 }*/
 a {
   text-decoration: none;
+  color: #1a63f4;
+}
+a:hover {
+  color: #2fb2ef;
+  -webkit-transition: color 0.5s; /*Safari3.1-6.0*/
+  transition: color .5s;
+}
+a:visited {
+  color: #6315a8;
 }
 header {
   width: 100%;
-  padding: 1em ;
+  padding: 0.5em ;
 }
 #flexContainer {
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
@@ -52,6 +61,12 @@ header {
 }
 .infoPrimary {
   width: 33%;
+  padding: 0 0.5em 0.5em 0;
+  align: center;
+}
+.infoPrimary .titleCard {
+  font-size: 1.5em;
+  font-weight: bolder;
 }
 .infoPrimary .authorship {
   font-size: 0.8em;
@@ -62,12 +77,10 @@ header {
 .infoPrimary .dateUpdated {
   font-size: 0.8em;
 }
-.titleCard {
-  font-size: 1.8em;
-  font-weight: bolder;
-}
 .infoSecondary {
   width: 33%;
+  padding: 0 0.5em 0.5em 0.5em;
+  font-size: 0.9em;
 }
 .startOver {
   width: 33%;
