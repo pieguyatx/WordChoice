@@ -1,9 +1,12 @@
+/* Pius Wong */
 /* Debug CSS
 * {
   border: 1px solid red !important;
 }
+.debugOutput {
+  color: red;
+}
 */
-/* Pius Wong */
 * {
   -webkit-box-sizing: border-box;
   -mox-box-sizing: border-box;
@@ -11,30 +14,31 @@
   box-sizing: border-box;
 }
 body {
-  background-color: white;
+  background-color: #b5a276;
   display: block;
   /* font-family: 'Crimson Text', serif; */
   font-family: 'Copse', serif;
   font-size: 1.5em;
 }
+/* Wood patterns from @mikehearn https://www.transparenttextures.com/ */
 body::after {
   content: "";
-  background: url("../img/paperlined.svg");
-  background-size: 100%;
-  opacity: 0.3;
+  background: url("../img/tileable-wood-colored.png");
+  background-size: auto;
+  opacity: 0.9;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: absolute;
   z-index: -1;
-  width: 100%;
 }
 a {
   text-decoration: none;
 }
 header {
   width: 100%;
+  padding: 1em ;
 }
 #flexContainer {
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
@@ -49,6 +53,15 @@ header {
 .infoPrimary {
   width: 33%;
 }
+.infoPrimary .authorship {
+  font-size: 0.8em;
+}
+.infoPrimary .authorship a{
+  font-weight: bold;
+}
+.infoPrimary .dateUpdated {
+  font-size: 0.8em;
+}
 .titleCard {
   font-size: 1.8em;
   font-weight: bolder;
@@ -59,13 +72,11 @@ header {
 .startOver {
   width: 33%;
   text-align: center;
-  padding: 2em 0 ;
 }
 .startOver button{
   font-family: 'Copse', serif;
   font-size: 1.5em;
-  padding: 0.1em;
-  border-radius: 0.5em;
+  padding: 0.5em;
   background-color: white;
   border: 0;
 }
@@ -127,8 +138,37 @@ main {
   padding:
 }
 
-.debugOutput {
-  color: red;
+/* CSS paper design from: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
+/*
+.paper {
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+*/
+.paper
+{
+  position: relative;
+}
+.paper:before, .paper:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 10px;
+  left: 5px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
+}
+.paper:after
+{
+  transform: rotate(3deg);
+  right: 5px;
+  left: auto;
 }
 
 @media only screen and (min-width: 1200px) {

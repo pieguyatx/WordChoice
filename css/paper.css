@@ -1,0 +1,30 @@
+/* CSS paper design from: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
+
+.paper {
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 50px rgba(0, 0, 0, .2);
+  position: relative;
+}
+.paper:before, .paper:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 13px;
+  left: 5px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #222;
+  -moz-box-shadow: 0 15px 10px #222;
+  box-shadow: 0 15px 10px #222;
+  transform: rotate(-3deg);
+}
+.paper:after
+{
+  transform: rotate(3deg);
+  right: 5px;
+  left: auto;
+}
