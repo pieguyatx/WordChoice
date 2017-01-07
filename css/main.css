@@ -14,13 +14,13 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #b5a276;
+  background-color: white;
   display: block;
   /* font-family: 'Crimson Text', serif; */
   font-family: 'Copse', serif;
   font-size: 1.5em;
 }
-/* Wood patterns from @mikehearn https://www.transparenttextures.com/ */
+/* Wood patterns from @mikehearn https://www.transparenttextures.com/ 
 body::after {
   content: "";
   background: url("../img/tileable-wood-colored.png");
@@ -32,7 +32,7 @@ body::after {
   right: 0;
   position: absolute;
   z-index: -1;
-}
+}*/
 a {
   text-decoration: none;
 }
@@ -136,39 +136,6 @@ main {
   display: inline;
   font-size: 0.5em;
   padding:
-}
-
-/* CSS paper design from: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
-/*
-.paper {
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-}
-*/
-.paper
-{
-  position: relative;
-}
-.paper:before, .paper:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 10px;
-  left: 5px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  box-shadow: 0 15px 10px #777;
-  transform: rotate(-3deg);
-}
-.paper:after
-{
-  transform: rotate(3deg);
-  right: 5px;
-  left: auto;
 }
 
 @media only screen and (min-width: 1200px) {

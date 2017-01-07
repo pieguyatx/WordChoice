@@ -3,7 +3,7 @@
 .paper {
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 50px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 50px rgba(0, 0, 0, .06);
   position: relative;
 }
 .paper:before, .paper:after
@@ -11,12 +11,12 @@
   z-index: -1;
   position: absolute;
   content: "";
-  bottom: 13px;
-  left: 5px;
+  bottom: 15px;
+  left: 3px;
   width: 50%;
   top: 80%;
   max-width:300px;
-  background: #777;
+  background: #999;
   -webkit-box-shadow: 0 15px 10px #222;
   -moz-box-shadow: 0 15px 10px #222;
   box-shadow: 0 15px 10px #222;
@@ -25,6 +25,6 @@
 .paper:after
 {
   transform: rotate(3deg);
-  right: 5px;
+  right: 3px;
   left: auto;
 }
