@@ -47,7 +47,6 @@ a:visited {
 }
 header {
   width: 100%;
-  padding: 0.5em ;
 }
 #flexContainer {
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
@@ -99,6 +98,7 @@ main {
 .messageDisplay{
   font-size: 1.5em;
   text-align: center;
+  margin: 0.5em;
 }
 .mainWindow{
   font-size: 2em;
@@ -107,7 +107,20 @@ main {
 }
 .mainWindow div {
   flex-grow: 1;
-  padding: 1em;
+  margin: 0 0.5em 0 0.5em;
+}
+.mainWindow button{
+  font-family: 'Copse', serif;
+  font-size: 1em;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.15em 0.6em 0.15em 0.6em;
+  background-color: white;
+  border: 0;
+  margin: 0;
+}
+footer {
+  padding: 0.5em;
 }
 .achievements{
   text-align: left;
@@ -132,12 +145,15 @@ main {
   display: block;
   padding-left: 1em;
 }
-.scores > div{
+.scores>div{
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox;  /* TWEENER - IE 10 */
   display: -webkit-flex; /* Safari */
   display: flex;
+}
+.scores>div>div:first-child{
+  font-weight: bold;
 }
 .score{
   padding-left: .5em;
@@ -148,7 +164,7 @@ main {
 .shareButtons{
   display: inline;
   font-size: 0.5em;
-  padding:
+  padding: 0.5em 0 0 0;
 }
 
 @media only screen and (min-width: 1200px) {

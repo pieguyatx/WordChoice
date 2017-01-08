@@ -14,6 +14,7 @@ $("header").on('click','.startOver button',function(){
   $(".achievements").empty();
   $(".achievements").append("<div class='paper-unclickable'>ACHIEVEMENTS:</div>");
   $(".messageDisplay").removeClass("paper-unclickable");
+  $(".mainWindow").removeClass("paper-unclickable");
 });
 
 // Set initial choices
@@ -69,7 +70,7 @@ function offerChoices(objWordChoices){
 
   for(let i=0; i<numChoices; i++){
     let outputData = choices[i];
-    let choiceContainer = "<div class='choice"+i+"'>%data%</div>";
+    let choiceContainer = "<div><button class='paper choice"+i+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]); // displays choices
     // Reorder the choice according to random shuffle earlier
@@ -170,6 +171,8 @@ function endState(objFinal){
   $(".mainWindow").append(
     "<div class='shareButtons'><a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence+"&quot;'' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></div>"
   );
+  // Add paper aesthetic to final sentence
+  $(".mainWindow").addClass("paper-unclickable");
   // Analyze URL qualities
   var outputAnalyzeURL = analyzeURL(objFinal.link);
   var domain = outputAnalyzeURL[0];
