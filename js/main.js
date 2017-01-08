@@ -71,7 +71,7 @@ function offerChoices(objWordChoices){
   for(let i=0; i<numChoices; i++){
     let outputData = choices[i];
     // Randomize which paper aesthetic to display
-    let paperChoice = [0,1,2,3,4,5,6,7];
+    let paperChoice = [1,2,3,4,5,6,7];
     paperChoice = shuffleArray(paperChoice);
     let choiceContainer = "<div><button class='paper paper"+paperChoice[0]+" choice"+i+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);

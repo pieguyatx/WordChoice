@@ -15,11 +15,12 @@
   position: relative;
   margin: 0.5em;
 }
-.paper1:hover{
+.paper:hover{
   color: #1a63f4;
   -webkit-transition: color 0.5s; /*Safari3.1-6.0*/
   transition: color .5s;
 }
+
 .paper1:before, .paper1:after
 {
   z-index: -1;
@@ -79,7 +80,7 @@
   z-index: -1;
   position: absolute;
   content: "";
-  bottom: 12px;
+  bottom: 20px;
   left: 5px;
   width: 46%;
   top: 77%;
