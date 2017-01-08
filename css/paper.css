@@ -1,4 +1,4 @@
-/* CSS paper design from: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
+/* CSS paper designs based on: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
 .paper-unclickable{
   background-color: #fffcf7;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
@@ -8,19 +8,19 @@
   margin: 0.5em;
 }
 
-.paper {
+.paper{
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 50px rgba(0, 0, 0, .07);
   position: relative;
   margin: 0.5em;
 }
-.paper:hover{
+.paper1:hover{
   color: #1a63f4;
   -webkit-transition: color 0.5s; /*Safari3.1-6.0*/
   transition: color .5s;
 }
-.paper:before, .paper:after
+.paper1:before, .paper1:after
 {
   z-index: -1;
   position: absolute;
@@ -36,9 +36,123 @@
   box-shadow: 0 15px 10px #222;
   transform: rotate(-3deg);
 }
-.paper:after
+.paper1:after
 {
   transform: rotate(3deg);
   right: 3px;
   left: auto;
+}
+
+.paper2:before
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 5px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #888;
+  transform: rotate(-3deg);
+}
+
+.paper3:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  right: 10px;
+  left: auto;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(3deg);
+}
+
+.paper4:before, .paper4:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 12px;
+  left: 5px;
+  width: 46%;
+  top: 77%;
+  max-width:300px;
+  background: #777;
+  box-shadow: 0 14px 20px #777;
+  transform: rotate(-8deg);
+}
+.paper4:after
+{
+  transform: rotate(8deg);
+  right: 10px;
+  left: auto;
+}
+
+.paper5{
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.paper5:before, .paper5:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    border-radius:100px / 10px;
+}
+
+.paper6{
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.paper6:before, .paper6:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    border-radius:100px / 10px;
+}
+.paper6:after
+{
+    right:10px;
+    left:auto;
+    transform:skew(8deg) rotate(3deg);
+}
+
+.paper7
+{
+    position:relative;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.paper7:before, .paper7:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    border-radius:100px / 10px;
+}
+.paper7:after
+{
+    right:10px;
+    left:auto;
+    transform:skew(8deg) rotate(3deg);
 }

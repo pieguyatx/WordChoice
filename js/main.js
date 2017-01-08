@@ -70,7 +70,10 @@ function offerChoices(objWordChoices){
 
   for(let i=0; i<numChoices; i++){
     let outputData = choices[i];
-    let choiceContainer = "<div><button class='paper choice"+i+"'>%data%</button></div>";
+    // Randomize which paper aesthetic to display
+    let paperChoice = [0,1,2,3,4,5,6,7];
+    paperChoice = shuffleArray(paperChoice);
+    let choiceContainer = "<div><button class='paper paper"+paperChoice[0]+" choice"+i+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]); // displays choices
     // Reorder the choice according to random shuffle earlier
