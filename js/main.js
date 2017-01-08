@@ -12,7 +12,8 @@ $("header").on('click','.startOver button',function(){
   $(".mainWindow").empty();
   offerChoices(wordsAll);
   $(".achievements").empty();
-  $(".achievements").append("ACHIEVEMENTS:");
+  $(".achievements").append("<div class='paper-unclickable'>ACHIEVEMENTS:</div>");
+  $(".messageDisplay").removeClass("paper-unclickable");
 });
 
 // Set initial choices
@@ -88,6 +89,10 @@ function offerChoices(objWordChoices){
         chosenWord = " " + chosenWord;
       }
       $(".messageDisplay").append(chosenWord);
+      // Add paper aesthetic to message area if it's not blank
+      if(objWordChoices[chosenProperty].order===1){
+        $(".messageDisplay").addClass("paper-unclickable");
+      }
       // Clear screen of old choices
       $(".mainWindow").empty();
       // Find whether there are any more choices deeper into the tree
@@ -142,7 +147,7 @@ function checkForNext(obj){
  * Randomize array element order in-place.
  * Using Durstenfeld shuffle algorithm.
  */
-function shuffleArray(array) {
+        function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
@@ -196,6 +201,8 @@ function endState(objFinal){
   }
   // Give overall score
   $(".achievements").append("<div class='achievement' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
+  // Format paper aesthetic on achievements
+  $(".achievement").addClass("paper-unclickable");
   // display witty comment on score? graphic?
   // Display score heading if record pops up for the first time
     if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
@@ -409,6 +416,7 @@ function endState(objFinal){
       $("#scoreShortestURL").empty();
       $("#scoreShortestURL").append(urlLength.toLocaleString()+" characters");
     }
+
   // Display high-score data (if it exists)
   // console.log(highestScores); // DEBUG
 
