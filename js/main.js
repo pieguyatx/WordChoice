@@ -12,7 +12,7 @@ $("header").on('click','.startOver button',function(){
   $(".mainWindow").empty();
   offerChoices(wordsAll);
   $(".achievements").empty();
-  $(".achievements").append("<div class='paper-unclickable'>ACHIEVEMENTS:</div>");
+  $(".achievements").append("<div class='paper-unclickable'>Achievements:</div>");
   $(".messageDisplay").removeClass("paper-unclickable");
   $(".mainWindow").removeClass("paper-unclickable");
 });

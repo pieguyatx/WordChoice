@@ -20,6 +20,11 @@
   -webkit-transition: color 0.5s; /*Safari3.1-6.0*/
   transition: color .5s;
 }
+.paper:active{
+  color: #84f8ff;
+  -webkit-transition: color 0.5s; /*Safari3.1-6.0*/
+  transition: color .5s;
+}
 
 .paper1:before, .paper1:after
 {
