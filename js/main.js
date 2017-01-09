@@ -169,13 +169,13 @@ function endState(objFinal){
   $(".mainWindow").empty();
   // show final sentence
   objFinal.sentence = objFinal.sentence.replace("_"," ");
-  $(".mainWindow").append("<div class='finalSentence'>"+objFinal.sentence+"</div>");
+  $(".mainWindow").append("<span><div class='finalSentence'>"+objFinal.sentence+"</div></span>");
   // display a SHARE button (Twitter, Facebook, Email)
-  $(".mainWindow").append(
-    "<div class='shareButtons'><a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence+"&quot;'' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></div>"
+  $(".finalSentence").append(
+    "<span class='shareButtons'>&nbsp;&nbsp;&nbsp;<a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence+"&quot;'' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></span>"
   );
   // Add paper aesthetic to final sentence
-  $(".mainWindow").addClass("paper-unclickable");
+  $(".mainWindow>span").addClass("paper-unclickable");
   // Analyze URL qualities
   var outputAnalyzeURL = analyzeURL(objFinal.link);
   var domain = outputAnalyzeURL[0];
