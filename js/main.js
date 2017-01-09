@@ -91,11 +91,12 @@ function offerChoices(objWordChoices){
       // Display word choice in appropriate place
       if(objWordChoices[chosenProperty].order>1){
         chosenWord = " " + chosenWord;
+        $(".messageDisplay span").prepend(chosenWord);
       }
-      $(".messageDisplay").append(chosenWord);
-      // Add paper aesthetic to message area if it's not blank
+      // Add paper aesthetic to message area if it's not blank; add ellipses
       if(objWordChoices[chosenProperty].order===1){
         $(".messageDisplay").addClass("paper-unclickable");
+        $(".messageDisplay").append(chosenWord + '<span>...</span>');
       }
       // Clear screen of old choices
       $(".mainWindow").empty();
