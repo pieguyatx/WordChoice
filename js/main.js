@@ -88,15 +88,15 @@ function offerChoices(objWordChoices){
       // Save word choice
       var chosenWord = choices[i];
       var chosenProperty = String.fromCharCode(i+65);
-      // Display word choice in appropriate place
+      // Display word choice in appropriate place; add ellipses appropriately
       if(objWordChoices[chosenProperty].order>1){
         chosenWord = " " + chosenWord;
-        $(".messageDisplay span").prepend(chosenWord);
+        $(".messageDisplay span").remove();
       }
-      // Add paper aesthetic to message area if it's not blank; add ellipses
+      $(".messageDisplay").append(chosenWord + '<span>...</span>');
+      // Add paper aesthetic to message area if it's not blank
       if(objWordChoices[chosenProperty].order===1){
         $(".messageDisplay").addClass("paper-unclickable");
-        $(".messageDisplay").append(chosenWord + '<span>...</span>');
       }
       // Clear screen of old choices
       $(".mainWindow").empty();
@@ -173,7 +173,7 @@ function endState(objFinal){
   $(".mainWindow").append("<span><div class='finalSentence'>"+objFinal.sentence+"</div></span>");
   // display a SHARE button (Twitter, Facebook, Email)
   $(".finalSentence").append(
-    "<span class='shareButtons'>&nbsp;&nbsp;&nbsp;<a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence+"&quot;'' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></span>"
+    "<span class='shareButtons'>&nbsp;&nbsp;&nbsp;<a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence.substring(0,99)+"...&quot; http://www.piuswong.com/wordchoice/' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></span>"
   );
   // Add paper aesthetic to final sentence
   $(".mainWindow>span").addClass("paper-unclickable");
