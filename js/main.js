@@ -198,7 +198,7 @@ function endState(objFinal){
     $("#scoreHigh").append(scoreHigh);
   }
   // Display achievements (to be cleared when restarting)
-  var msgAchievement=["Overall Score", "Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Complex URL", "Simple URL","Going Blue","Religious"];
+  var msgAchievement=["Overall Score", "Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Complex URL", "Simple URL","Vulgarity","Religious"];
   var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity","sGoingBlue","sReligious"];
   for(let i=1; i<scores.length; i++){
     if(scores[i]>0){
@@ -227,7 +227,7 @@ function endState(objFinal){
       $(".scores").append("<div><div>Highest Score for a Blog:</div><div class='score' id='scoreBlog'></div></div>");
     }
     if(highestScores.blue===0&&((scores[11]>0)&&(scores[0]>0))){
-      $(".scores").append("<div><div>Highest Score Going Blue:</div><div class='score' id='scoreBlue'></div></div>");
+      $(".scores").append("<div><div>Highest Score for Vulgarity:</div><div class='score' id='scoreBlue'></div></div>");
     }
     if(highestScores.religious===0&&((scores[12]>0)&&(scores[0]>0))){
       $(".scores").append("<div><div>Highest Score for Something Religious:</div><div class='score' id='scoreReligious'></div></div>");
@@ -312,7 +312,7 @@ function endState(objFinal){
       $("#scoreBlog").empty();
       $("#scoreBlog").append(highestScores.blog);
     }
-    // Highest score while going blue
+    // Highest score while going blue / vulgarity
     if((scores[11]>0)&&(scores[0]>highestScores.blue)){
       highestScores.blue = scores[0];
       $("#scoreBlue").empty();
