@@ -200,6 +200,9 @@ function endState(objFinal){
   // Display achievements (to be cleared when restarting)
   var msgAchievement=["Overall Score", "Length", "Brevity", "Popularity", "Uniqueness", "History","Newness","Media", "Special Domain", "Complex URL", "Simple URL","Vulgarity","Religious"];
   var scoreIds=["sOverall", "sLength", "sBrevity", "sPopularity", "sUniqueness", "sHistory", "sNewness", "sMedia", "surlDomain", "surlComplexity", "surlSimplicity","sGoingBlue","sReligious"];
+  // Change "Media" achievement message to be more specific before displaying
+  msgAchievement[7] = urlType[0].toUpperCase() + urlType.slice(1);
+  // Display achievements
   for(let i=1; i<scores.length; i++){
     if(scores[i]>0){
       $(".achievements").append("<div class='achievement' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
