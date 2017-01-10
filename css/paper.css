@@ -163,7 +163,7 @@
     transform:skew(8deg) rotate(3deg);
 }
 
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 380px) {
   .paper-unclickable {
     margin: 0.25em;
   }

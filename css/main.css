@@ -161,6 +161,7 @@ footer {
   display: -ms-flexbox;  /* TWEENER - IE 10 */
   display: -webkit-flex; /* Safari */
   display: flex;
+  flex-direction: row;
 }
 .scores>div>div:first-child{
   font-weight: bold;
@@ -249,7 +250,14 @@ footer {
   }
 }
 
-@media only screen and (max-width: 370px) {
+
+@media only screen and (max-width: 650px) and (min-width: 543px) {
+  .startOver{
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
   .infoPrimary .titleCard {
     font-size: 0.6em;
   }
@@ -271,5 +279,8 @@ footer {
   }
   .mainWindow{
     font-size: 1.5em;
+  }
+  .scores>div{
+    flex-direction: column;;
   }
 }
