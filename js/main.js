@@ -67,17 +67,16 @@ function offerChoices(objWordChoices){
   }
   // Rearrange display order to be random
   arrayOrder = shuffleArray(arrayOrder);
-
   for(let i=0; i<numChoices; i++){
     let outputData = choices[i];
     // Randomize which paper aesthetic to display
     let paperChoice = [1,2,3,4,5,6,7];
     paperChoice = shuffleArray(paperChoice);
-    let choiceContainer = "<div><button class='paper paper"+paperChoice[0]+" choice"+i+"'>%data%</button></div>";
+    let choiceContainer = "<div id='choiceContainer"+i+"'><button class='paper paper"+paperChoice[0]+" choice"+i+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]); // displays choices
     // Reorder the choice according to random shuffle earlier
-    $(".choice"+i).css("order",arrayOrder[i]);
+    $("#choiceContainer"+i).css("order",arrayOrder[i]);
   }
   // animate?
 
