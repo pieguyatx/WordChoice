@@ -1,11 +1,34 @@
 /* CSS paper designs based on: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
 .paper-unclickable{
-  background-color: #f7fdff;
+  background-color: #eafcff;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 30px #ddd8d0;
   padding: 0.5em;
   margin: 0.5em;
+  position: relative;
+}
+.paper-unclickable:before, .paper-unclickable:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 18px;
+  left: 10px;
+  width: 48%;
+  top: 70%;
+  max-width:300px;
+  background: #999;
+  -webkit-box-shadow: 0 15px 10px #222;
+  -moz-box-shadow: 0 15px 10px #222;
+  box-shadow: 0 15px 10px #222;
+  transform: rotate(-1.5deg);
+}
+.paper-unclickable:after
+{
+  transform: rotate(1.5deg);
+  right: 10px;
+  left: auto;
 }
 
 .paper{

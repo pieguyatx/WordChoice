@@ -250,6 +250,11 @@ footer {
     width: 150px;
   }
 }
+@media only screen and (max-width: 650px) {
+  .mainWindow{
+    font-size: 2em;
+  }
+}
 
 @media only screen and (max-width: 380px) {
   .infoPrimary .titleCard {
