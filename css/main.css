@@ -19,7 +19,7 @@ body {
   /* font-family: 'Crimson Text', serif; */
   font-family: 'Copse', serif;
   font-size: 1.5em;
-  /* Wood patterns from @mikehearn https://www.transparenttextures.com/ */
+  /* Wood pattern from Atle Mo https://subtlepatterns.com/about/*/
   background: url("../img/wood.png");
   background-repeat: repeat;
   background-position: center top;
