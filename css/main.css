@@ -93,6 +93,9 @@ main {
   font-size: 2.5vw;
   text-align: center;
   margin: 0 0.5em 0.5em 0.5em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 .mainWindow{
   font-size: 6vw;
