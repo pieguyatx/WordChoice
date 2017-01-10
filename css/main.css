@@ -152,7 +152,7 @@ footer {
   display: -ms-flexbox;  /* TWEENER - IE 10 */
   display: -webkit-flex; /* Safari */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .scores>div>div:first-child{
   font-weight: bold;
@@ -270,8 +270,5 @@ footer {
   }
   .mainWindow{
     font-size: 1.5em;
-  }
-  .scores>div{
-    flex-direction: column;;
   }
 }
