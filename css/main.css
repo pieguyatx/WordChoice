@@ -79,7 +79,7 @@ header {
   font-size: 1.5vw;
 }
 .infoSecondary {
-  width: 33%;
+  width: 28%;
   padding: 0.5em;
   font-size: 1.5vw;
 }
@@ -178,7 +178,37 @@ footer {
   padding: 0;
 }
 
-@media only screen and (min-width: 1200px) {
-  .mainWindow{
-    font-size: 6vw;
+@media only screen and (max-width: 1280px) {
+  .infoPrimary .titleCard {
+    font-size: 1.25em;
   }
+  .infoPrimary .authorship {
+    font-size: 0.8em;
+  }
+  .infoPrimary .dateUpdated {
+    font-size: 0.8em;
+  }
+  .infoSecondary {
+    width: 260px;
+    font-size: 0.8em;
+  }
+  .startOver button{
+    font-size: 1.3em;
+  }
+  .messageDisplay{
+    font-size: 1.3em;
+  }
+  .mainWindow{
+  }
+  .mainWindow button{
+  }
+  .achievements{
+    font-size: 0.8em;
+  }
+  .scores{
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+}
