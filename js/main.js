@@ -65,20 +65,20 @@ function offerChoices(objWordChoices){
     choices[i] = objWordChoices[propertyName].word; // get word choices
     arrayOrder[i] = i;  // initialize array to be shuffled later
   }
+  // Limit number of choices to display
+  maxChoices = 6; // maxChoices = numChoices // default allows all choices
+  if(numChoices<maxChoices){maxChoices=numChoices}
   // Rearrange display order to be random
   arrayOrder = shuffleArray(arrayOrder);
-  for(let i=0; i<numChoices; i++){
-    let outputData = choices[i];
+  for(let i=0; i<maxChoices; i++){
+    let outputData = choices[arrayOrder[i]];
     // Randomize which paper aesthetic to display
     let paperChoice = [1,2,3,4,5,6,7];
     paperChoice = shuffleArray(paperChoice);
-    let choiceContainer = "<div id='choiceContainer"+i+"'><button class='paper paper"+paperChoice[0]+" choice"+i+"'>%data%</button></div>";
+    let choiceContainer = "<div id='choiceContainer"+i+"'><button class='paper paper"+paperChoice[0]+" choice"+arrayOrder[i]+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]); // displays choices
-    // Reorder the choice according to random shuffle earlier
-    $("#choiceContainer"+i).css("order",arrayOrder[i]);
   }
-  // animate?
 
   // Respond to choice
   // Read in user choice
