@@ -162,3 +162,12 @@
     left:auto;
     transform:skew(8deg) rotate(3deg);
 }
+
+@media only screen and (max-width: 370px) {
+  .paper-unclickable {
+    margin: 0.25em;
+  }
+  .paper{
+    margin: 0.1em;
+  }
+}

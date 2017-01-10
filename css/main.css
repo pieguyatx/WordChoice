@@ -179,6 +179,9 @@ footer {
 }
 
 @media only screen and (max-width: 1280px) {
+  .infoPrimary {
+    width: 312px;
+  }
   .infoPrimary .titleCard {
     font-size: 1.25em;
   }
@@ -199,8 +202,7 @@ footer {
     font-size: 1.3em;
   }
   .mainWindow{
-  }
-  .mainWindow button{
+    font-size: 3em;
   }
   .achievements{
     font-size: 0.8em;
@@ -210,5 +212,64 @@ footer {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 900px) {
+  .startOver{
+    width: 120px;
+  }
+  .startOver button{
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .infoPrimary {
+    width: 280px;
+  }
+  .infoPrimary .titleCard {
+    font-size: 1em;
+  }
+  .infoPrimary .authorship {
+    font-size: 0.7em;
+  }
+  .infoPrimary .dateUpdated {
+    font-size: 0.7em;
+  }
+  .infoSecondary {
+    width: 230px;
+    font-size: 0.7em;
+  }
+  .startOver{
+    width: 100px;
+  }
+  .startOver button{
+    font-size: 0.8em;
+  }
+  .mainWindow{
+    font-size: 2.5em;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .infoPrimary .titleCard {
+    font-size: 0.6em;
+  }
+  .infoPrimary .authorship {
+    font-size: 0.5em;
+  }
+  .infoPrimary .dateUpdated {
+    font-size: 0.5em;
+  }
+  .infoSecondary {
+    width: 190px;
+    font-size: 0.6em;
+  }
+  .startOver{
+    width: 80px;
+  }
+  .startOver button{
+    font-size: 0.7em;
+  }
+  .mainWindow{
+    font-size: 1.5em;
+  }
 }
