@@ -1,9 +1,9 @@
 /* CSS paper designs based on: https://www.sitepoint.com/pure-css3-paper-curls/ and https://paulund.co.uk/learn-css-box-shadow*/
 .paper-unclickable{
-  background-color: #fffcf7;
+  background-color: #edfcff;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 50px #ddd8d0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), inset 0 0 30px #ddd8d0;
   padding: 0.5em;
   margin: 0.5em;
 }
