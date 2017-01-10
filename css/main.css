@@ -66,22 +66,22 @@ header {
   align: center;
 }
 .infoPrimary .titleCard {
-  font-size: 1.5em;
+  font-size: 2.3vw;
   font-weight: bolder;
 }
 .infoPrimary .authorship {
-  font-size: 0.8em;
+  font-size: 1.5vw;
 }
 .infoPrimary .authorship a{
   font-weight: bold;
 }
 .infoPrimary .dateUpdated {
-  font-size: 0.8em;
+  font-size: 1.5vw;
 }
 .infoSecondary {
   width: 33%;
   padding: 0.5em;
-  font-size: 1em;
+  font-size: 1.5vw;
 }
 .startOver {
   width: 33%;
@@ -89,7 +89,7 @@ header {
 }
 .startOver button{
   font-family: 'Copse', serif;
-  font-size: 1.5em;
+  font-size: 2.5vw;
   font-weight: bold;
   padding: 0.5em;
   background-color: white;
@@ -99,12 +99,12 @@ main {
   width: 100%;
 }
 .messageDisplay{
-  font-size: 1.5em;
+  font-size: 2.5vw;
   text-align: center;
   margin: 0 0.5em 0.5em 0.5em;
 }
 .mainWindow{
-  font-size: 2em;
+  font-size: 6vw;
   text-align: center;
   font-weight: bold;
 }
@@ -127,6 +127,7 @@ footer {
 }
 .achievements{
   text-align: left;
+  font-size: 1.5vw;
   font-weight: bold;
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
@@ -151,7 +152,7 @@ footer {
   display: flex;
 }
 .scores{
-  font-size: 0.8em;
+  font-size: 1.3vw;
   padding-left: 1em;
 }
 .scores>div{
@@ -179,5 +180,5 @@ footer {
 
 @media only screen and (min-width: 1200px) {
   .mainWindow{
-    font-size: 5vw;
-}
+    font-size: 6vw;
+  }
