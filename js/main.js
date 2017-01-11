@@ -8,6 +8,7 @@
   // instructions
   // START OVER button
 $("header").on('click','.startOver button',function(){
+  playCrumple();
   $(".messageDisplay").empty();
   $(".mainWindow").empty();
   offerChoices(wordsAll);
@@ -54,6 +55,7 @@ highestScores.shortestURL = 0;
 
 // Offer word choices
 function offerChoices(objWordChoices){
+  playRandomPaperSound();
   // Read in possible choices from word tree
   // Display choices randomly in the appropriate area
   //var choices = ["ChoiceA","ChoiceBisareallylongword","ChoiceC","ChoiceD"]; //DEBUG
@@ -166,6 +168,7 @@ function shuffleArray(array) {
 
 // End State
 function endState(objFinal){
+  playRandomPaperSound();
   // clear main section - animate?
   $(".messageDisplay").empty();
   $(".mainWindow").empty();
@@ -668,4 +671,19 @@ function analyzeURL(url) {
     var urlLength = url.length;
 
     return [domain,urlType,extension,urlLength];
+}
+
+// Play paper sound at random
+function playRandomPaperSound(){
+  var audioElement = document.createElement('audio');
+  let iSound = shuffleArray([1,2,3,4,5,6,7])[0];
+  audioElement.setAttribute('src', 's/s'+iSound+'.mp3');
+  audioElement.play();
+}
+
+// Play crumple sound
+function playCrumple(){
+  var audioElement = document.createElement('audio');
+  audioElement.setAttribute('src', 's/crumple.mp3');
+  audioElement.play();
 }
