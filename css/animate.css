@@ -1,8 +1,8 @@
 .fadeIn{
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
 }
 @-webkit-keyframes fadeIn {
     0% {opacity: 0;}
@@ -16,6 +16,7 @@
   0% {opacity: 0;}
   100% {transform: 1;}
 }
+
 .fadeInDelay{
   -webkit-animation-name: fadeInDelay;
   animation-name: fadeInDelay;
