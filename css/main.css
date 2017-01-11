@@ -242,6 +242,15 @@ footer {
   .mainWindow{
     font-size: 2.5em;
   }
+  .messageDisplay{
+    font-size: 1em;
+  }
+  .achievements{
+    font-size: 0.7em;
+  }
+  .scores{
+    font-size: 0.65em;
+  }
 }
 
 
@@ -278,5 +287,14 @@ footer {
   }
   .mainWindow{
     font-size: 1.5em;
+  }
+  .messageDisplay{
+    font-size: 0.7em;
+  }
+  .achievements{
+    font-size: 0.6em;
+  }
+  .scores{
+    font-size: 0.5em;
   }
 }
