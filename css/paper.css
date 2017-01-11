@@ -8,9 +8,19 @@
   margin: 0.5em;
   position: relative;
 }
-.messageDisplay {
-  background-color: #fdffe8;
-}
+.messageDisplay {background-color: #fdffe8;}
+#sLength{background-color: #fff5e8;}
+#sBrevity{background-color: #e5fff2;}
+#sPopularity{background-color: #fff4fd;}
+#sUniqueness{background-color: #f4f7ff;}
+#sHistory{background-color: #fff4f4;}
+#sNewness{background-color: #fefff4;}
+#sMedia{background-color: #f4fffa;}
+#surlDomain{background-color: #fff6f4;}
+#surlComplexity{background-color: #f9f4ff;}
+#surlSimplicity{background-color: #f4fffa;}
+#sGoingBlue{background-color: #fff4f9;}
+#sReligious{background-color: #fffcf4;}
 .paper-unclickable:before, .paper-unclickable:after
 {
   z-index: -1;
