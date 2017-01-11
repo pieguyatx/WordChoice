@@ -281,7 +281,7 @@ function endState(objFinal){
     if(highestScores.newest===0){
       $(".scores").append("<div><div>Newest Sentence Published:</div><div class='score' id='scoreNewest'></div></div>");
     }
-    if(highestScores.popular===0&&objFinal.numHits>1){
+    if(highestScores.popular===0&&objFinal.numHits>0){
       $(".scores").append("<div><div>Most Popular Sentence:</div><div class='score' id='scorePopular'></div></div>");
     }
     if(highestScores.unique===0){
