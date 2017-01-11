@@ -13,9 +13,10 @@ $("header").on('click','.startOver button',function(){
   $(".mainWindow").empty();
   offerChoices(wordsAll);
   $(".achievements").empty();
-  $(".achievements").append("<div class='paper-unclickable'>Achievements:</div>");
+  $(".achievements").append("<div class='paper-unclickable-noShadow'>Achievements:</div>");
   $(".messageDisplay").removeClass("paper-unclickable");
   $(".mainWindow").removeClass("paper-unclickable");
+  $('.startOver').removeClass("pulse");
 });
 
 // Set initial choices
@@ -212,13 +213,11 @@ function endState(objFinal){
     // Randomize the animation of scores
     let j = shuffleArray([1,2,3,4,5,6])[0];
     if(scores[i]>0){
-      $(".achievements").append("<div class='achievement slide"+j+"' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
+      $(".achievements").append("<div class='achievement paper-unclickable-noShadow slide"+j+"' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
     }
   }
   // Give overall score
-  $(".achievements").append("<div class='achievement slide1' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
-  // Format paper aesthetic on achievements
-  $(".achievement").addClass("paper-unclickable");
+  $(".achievements").append("<div class='achievement paper-unclickable-noShadow slide1' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
   // display witty comment on score? graphic?
   // Display score heading if record pops up for the first time
     if(highestScores.book===0&&((urlType==="book")&&(scores[0]>0))){
@@ -438,6 +437,7 @@ function endState(objFinal){
 
   // Thanks for playing
   // emphasize the START OVER button
+  $('.startOver').addClass("pulse");
 }
 
 // Calculate a score
