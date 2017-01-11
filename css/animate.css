@@ -57,6 +57,24 @@
   -webkit-animation-duration: 1.7s;
 	animation-duration: 1.7s;
 }
+.slide4{
+  -webkit-animation-name: slideDown;
+	animation-name: slideDown;
+  -webkit-animation-duration: 1.62s;
+	animation-duration: 1.62s;
+}
+.slide5{
+  -webkit-animation-name: slideDownLeft;
+	animation-name: slideDownLeft;
+  -webkit-animation-duration: 1.5s;
+	animation-duration: 1.5s;
+}
+.slide6{
+  -webkit-animation-name: slideDownRight;
+	animation-name: slideDownRight;
+  -webkit-animation-duration: 1.85s;
+	animation-duration: 1.85s;
+}
 
 .swipe1{
   -webkit-animation-name: slideDown;
@@ -75,6 +93,24 @@
 	animation-name: slideDownRight;
   -webkit-animation-duration: 0.65s;
 	animation-duration: 0.65s;
+}
+.swipe4{
+  -webkit-animation-name: slideDown;
+	animation-name: slideDown;
+  -webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+}
+.swipe5{
+  -webkit-animation-name: slideDownLeft;
+	animation-name: slideDownLeft;
+  -webkit-animation-duration: 0.72s;
+	animation-duration: 0.72s;
+}
+.swipe6{
+  -webkit-animation-name: slideDownRight;
+	animation-name: slideDownRight;
+  -webkit-animation-duration: 0.47s;
+	animation-duration: 0.47s;
 }
 
 @-webkit-keyframes slideDown {

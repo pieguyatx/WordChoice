@@ -76,7 +76,7 @@ function offerChoices(objWordChoices){
     let paperChoice = [1,2,3,4,5,6,7];
     paperChoice = shuffleArray(paperChoice);
     // Randomize animation for choices
-    let j = shuffleArray([1,2,3])[1];
+    let j = shuffleArray([1,2,3,4,5,6])[1];
     let choiceContainer = "<div id='choiceContainer"+i+"'><button class='swipe"+j+" paper paper"+paperChoice[0]+" choice"+arrayOrder[i]+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]); // displays choices
@@ -207,7 +207,7 @@ function endState(objFinal){
   // Display achievements
   for(let i=1; i<scores.length; i++){
     // Randomize the animation of scores
-    let j = shuffleArray([1,2,3])[0];
+    let j = shuffleArray([1,2,3,4,5,6])[0];
     if(scores[i]>0){
       $(".achievements").append("<div class='achievement slide"+j+"' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
     }
