@@ -75,7 +75,9 @@ function offerChoices(objWordChoices){
     // Randomize which paper aesthetic to display
     let paperChoice = [1,2,3,4,5,6,7];
     paperChoice = shuffleArray(paperChoice);
-    let choiceContainer = "<div id='choiceContainer"+i+"'><button class='paper paper"+paperChoice[0]+" choice"+arrayOrder[i]+"'>%data%</button></div>";
+    // Randomize animation for choices
+    let j = shuffleArray([1,2,3])[1];
+    let choiceContainer = "<div id='choiceContainer"+i+"'><button class='swipe"+j+" paper paper"+paperChoice[0]+" choice"+arrayOrder[i]+"'>%data%</button></div>";
     outputData = choiceContainer.replace("%data%",outputData);
     $(".mainWindow").append([outputData]); // displays choices
   }
