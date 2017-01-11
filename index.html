@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta lang="en" charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Choice | A web app for words already said.</title>
+    <title>Word Choice | A digital toy for words already said.</title>
+    <meta name="description" content="This digital toy lets you choose your own path, one word at a time.  Let's see how unique your word choices really are." />
+    <meta name="author" content="Pius Wong" />
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/paper.css">
     <link rel="stylesheet" href="css/animate.css">
-    <meta name="description" content="This digital toy lets you choose your own path, one word at a time.  Let's see how unique your word choices really are.">
-    <meta name="keywords" content="app, game, toy, storytelling, internet, English">
-    <meta name="author" content="Pius Wong">
-    <link href="https://fonts.googleapis.com/css?family=Copse|Crimson+Text" rel="stylesheet">
+    <meta property="og:site_name" content="Word Choice"/>
+    <meta property="og:title" content="Word Choice | A digital toy for words already said." />
+    <meta property="og:url" content="http://www.piuswong.com/wordchoice/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="This digital toy lets you choose your own path, one word at a time.  Let's see how unique your word choices really are." />
+    <meta property="og:image" content="http://www.piuswong.com/wordchoice/img/wordchoice_logo.png" />
+    <meta property="fb:app_id" content="227126297744003"; />
+    <link href="https://fonts.googleapis.com/css?family=Copse|Crimson+Text" rel="stylesheet" />
   </head>
   <body>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '227126297744003',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <header id="flexContainer" class="fadeIn">
       <div class="infoPrimary">
