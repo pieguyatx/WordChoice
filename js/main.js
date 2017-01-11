@@ -180,7 +180,7 @@ function endState(objFinal){
     "<span class='shareButtons'>&nbsp;&nbsp;&nbsp;<a href='https://twitter.com/share' class='twitter-share-button' data-size='large' data-text='&quot;"+objFinal.sentence.substring(0,99)+"...&quot; http://www.piuswong.com/wordchoice/' data-hashtags='WordChoice' data-related='PiosLabs' data-lang='en' data-show-count='false'>Tweet</a><script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script></span>"
   );
   // Add paper aesthetic to final sentence
-  $(".mainWindow>span").addClass("paper-unclickable");
+  $(".mainWindow>span").addClass("paper-unclickable slideRight");
   // Analyze URL qualities
   var outputAnalyzeURL = analyzeURL(objFinal.link);
   var domain = outputAnalyzeURL[0];

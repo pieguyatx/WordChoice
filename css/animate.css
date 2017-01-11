@@ -139,3 +139,18 @@
   from {transform: translateY(-80vh) translateX(-100vw) scale(2);}
   to {transform: translateY(0%) translateX(0%) scale(1);}
 }
+
+.slideRight{
+  -webkit-animation-name: slideRight;
+	animation-name: slideRight;
+  -webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+}
+@-webkit-keyframes slideRight {
+  from {transform: -webkit-translateX(-100%);}
+  to {transform: -webkit-translateX(0%);}
+}
+@keyframes slideRight {
+  from {transform: translateX(-100%);}
+  to {transform: translateX(0%);}
+}

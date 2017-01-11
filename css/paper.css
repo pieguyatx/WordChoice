@@ -36,6 +36,10 @@
   -moz-box-shadow: 0 15px 10px #222;
   box-shadow: 0 15px 10px #222;
   transform: rotate(-1.5deg);
+  -webkit-animation-name: fadeInDelay;
+  animation-name: fadeInDelay;
+  -webkit-animation-duration: 0.9s;
+  animation-duration: 0.9s;
 }
 .paper-unclickable:after
 {
