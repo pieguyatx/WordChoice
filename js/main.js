@@ -151,7 +151,7 @@ function checkForNext(obj){
  * Randomize array element order in-place.
  * Using Durstenfeld shuffle algorithm.
  */
-        function shuffleArray(array) {
+function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
@@ -204,12 +204,14 @@ function endState(objFinal){
   msgAchievement[7] = urlType[0].toUpperCase() + urlType.slice(1);
   // Display achievements
   for(let i=1; i<scores.length; i++){
+    // Randomize the animation of scores
+    let j = shuffleArray([1,2,3])[0];
     if(scores[i]>0){
-      $(".achievements").append("<div class='achievement' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
+      $(".achievements").append("<div class='achievement slide"+j+"' id='"+scoreIds[i]+"'>"+msgAchievement[i]+"! +"+scores[i]+"</div>");
     }
   }
   // Give overall score
-  $(".achievements").append("<div class='achievement' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
+  $(".achievements").append("<div class='achievement slide1' id='"+scoreIds[0]+"'>"+msgAchievement[0]+": "+scores[0]+"</div>");
   // Format paper aesthetic on achievements
   $(".achievement").addClass("paper-unclickable");
   // display witty comment on score? graphic?

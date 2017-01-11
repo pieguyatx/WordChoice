@@ -29,6 +29,10 @@
   transform: rotate(1.5deg);
   right: 10px;
   left: auto;
+  -webkit-animation-name: fadeInDelay;
+  animation-name: fadeInDelay;
+  -webkit-animation-duration: 0.9s;
+  animation-duration: 0.9s;
 }
 
 .paper{

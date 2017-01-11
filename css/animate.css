@@ -1,0 +1,122 @@
+.fadeIn{
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+}
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {transform: 1;}
+}
+@-moz-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {transform: 1;}
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {transform: 1;}
+}
+.fadeInDelay{
+  -webkit-animation-name: fadeInDelay;
+  animation-name: fadeInDelay;
+  -webkit-animation-duration: 0.9s;
+  animation-duration: 0.9s;
+}
+@-webkit-keyframes fadeInDelay {
+    0% {opacity: 0;}
+    60% {opacity: 0;}
+    100% {transform: 1;}
+}
+@-moz-keyframes fadeInDelay {
+  0% {opacity: 0;}
+  60% {opacity: 0;}
+  100% {transform: 1;}
+}
+@keyframes fadeInDelay {
+  0% {opacity: 0;}
+  60% {opacity: 0;}
+  100% {transform: 1;}
+}
+
+.slide1{
+  -webkit-animation-name: slideDown;
+	animation-name: slideDown;
+  -webkit-animation-duration: 1s;
+	animation-duration: 1s;
+}
+@-webkit-keyframes slideDown {
+    from {transform: -webkit-translateY(-100vh) -webkit-scale(3);}
+    to {transform: -webkit-translateY(0%) -webkit-scale(1);}
+}
+@keyframes slideDown {
+  from {transform: translateY(-100vh) scale(3);}
+  to {transform: translateY(0%) scale(1);}
+}
+.slide2{
+  -webkit-animation-name: slideDownLeft;
+	animation-name: slideDownLeft;
+  -webkit-animation-duration: 1.2s;
+	animation-duration: 1.2s;
+}
+@-webkit-keyframes slideDownLeft {
+    from {transform: -webkit-translateY(-80vh) -webkit-translateX(100vw) -webkit-scale(1.5);}
+    to {transform: -webkit-translateY(0%) -webkit-translateX(0%) -webkit-scale(1);}
+}
+@keyframes slideDownLeft {
+  from {transform: translateY(-80vh) translateX(100vw) scale(1.5);}
+  to {transform: translateY(0%) translateX(0%) scale(1);}
+}
+.slide3{
+  -webkit-animation-name: slideDownRight;
+	animation-name: slideDownRight;
+  -webkit-animation-duration: 1.4s;
+	animation-duration: 1.4s;
+}
+@-webkit-keyframes slideDownRight {
+  from {transform: -webkit-translateY(-80vh) -webkit-translateX(-100vw) -webkit-scale(2);}
+  to {transform: -webkit-translateY(0%) -webkit-translateX(0%) -webkit-scale(1);}
+}
+@keyframes slideDownRight {
+  from {transform: translateY(-80vh) translateX(-100vw) scale(2);}
+  to {transform: translateY(0%) translateX(0%) scale(1);}
+}
+
+/* .expandOpen from http://www.justinaguilar.com/animations/css/animations.css */
+.expandOpen{
+  -webkit-animation-name: expandOpen;
+	animation-name: expandOpen;
+}
+@-webkit-keyframes expandOpen {
+	0% {
+		-webkit-transform: scale(1.8);
+	}
+	50% {
+		-webkit-transform: scale(0.95);
+	}
+	80% {
+		-webkit-transform: scale(1.05);
+	}
+	90% {
+		-webkit-transform: scale(0.98);
+	}
+	100% {
+		-webkit-transform: scale(1);
+	}
+}
+@keyframes expandOpen {
+	0% {
+		transform: scale(1.8);
+	}
+	50% {
+		transform: scale(0.95);
+	}
+	80% {
+		transform: scale(1.05);
+	}
+	90% {
+		transform: scale(0.98);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
