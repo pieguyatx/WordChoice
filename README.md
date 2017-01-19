@@ -1,7 +1,10 @@
-# Private repo for testing w/ Pius
+# Word Choice
+A digital toy for words already said
 
-11/19/2016 pw:
-I'm using this space to test out the private share option of github and to try making a small project to help me learn JavaScript.  The project is a "digital toy" tentatively named "Word Choice" that let's you choose your own path one word at a time.  The choices are based on statements available on the internet.  Points will be given to the player/user depending on the uniqueness, age, and type of statement that results.
+This is a project to develop a game where you choose your own sentence one word at a time.  For version 0.1, the word choices provided from from the most popular sentences found on the internet in search engines.  The first words given also are based on popular first words in English-language novels.
 
-12/3/2016 pw:
-The basics of the program are made.  Scoring will be added, and some design elements will be added, too.  Eventually I'll want to redo this so that the initial dataBuilder.js isn't there, and only the parsed JSON is there, so that the data isn't as easily reproduced.
+Future versions or branches of the game could include giving words based on live scraping of search engine data to determine what the top next word choices are.  Alternately the word bank can just be expanded, or different word banks may become available based on a specific genre or learning goals, e.g. biology-related sentences for teachers to use in a biology class, or funny sentences to use to inspire an improv comedy show.  The game could also branch into other platforms beside the web.
+
+Pius Wong, 1/19/17
+pius@pioslabs.com
+
